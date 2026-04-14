@@ -245,11 +245,7 @@
       <a href="index.html#projets" class="retour">← Retour aux projets</a>
       <div class="projet-meta">
         <span style="font-size:1.6rem">🗺️</span>
-        <span class="badge-semestre">SAÉ — S1/S2</span>
-        <span class="badge-niveau">
-          <span class="point vert"></span>
-          Compétent
-        </span>
+        <span class="badge-semestre">Projet — S1</span>
       </div>
       <h1>Statistiques géographiques via API OpenStreetMap</h1>
       <div class="tags" style="margin-top:0.7rem">
@@ -274,7 +270,7 @@
         </div>
         <div class="info-ligne">
           <div class="label">Période</div>
-          <div class="valeur">Semestres 1 &amp; 2</div>
+          <div class="valeur">Semestre 1</div>
         </div>
         <div class="info-ligne">
           <div class="label">Format</div>
@@ -297,36 +293,11 @@
       <div class="deux-cols">
         <div class="bloc-texte">
           <h3>📋 Contexte</h3>
-          <p>SAÉ RT3 axée sur le développement et la manipulation d'APIs REST. Le projet consistait à interroger l'API Overpass (OpenStreetMap) pour extraire des données géolocalisées et produire des statistiques sur une zone géographique choisie.</p>
+          <p>Le projet est axée sur le développement et la manipulation d'APIs REST. Le projet consistait à interroger l'API Overpass (OpenStreetMap) pour extraire des données géolocalisées et produire des statistiques sur une zone géographique choisie. (Par exemple : les statistiques sur les lignes de bus de la ville de Lyon)</p>
         </div>
         <div class="bloc-texte">
           <h3>🔧 Méthode &amp; Outils</h3>
           <p>Prise en main de l'Overpass Query Language, développement en Python des fonctions de requête et de parsing JSON, puis traitement statistique des données. Utilisation de requests et matplotlib.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- COMPÉTENCES -->
-  <section class="section-projet">
-    <div class="contenu">
-      <p class="section-titre">Compétences &amp; Apprentissages critiques</p>
-      <div class="comp-list">
-        <div class="comp-item">
-          <span class="code">AC13.01</span>
-          <span>Utiliser un système informatique et ses outils</span>
-        </div>
-        <div class="comp-item">
-          <span class="code">AC13.02</span>
-          <span>Lire, exécuter, corriger et modifier un programme</span>
-        </div>
-        <div class="comp-item">
-          <span class="code">AC13.03</span>
-          <span>Traduire un algorithme dans un langage donné</span>
-        </div>
-        <div class="comp-item">
-          <span class="code">AC13.05</span>
-          <span>Choisir les mécanismes de gestion de données adaptés</span>
         </div>
       </div>
     </div>
@@ -338,12 +309,12 @@
       <p class="section-titre">Résultats &amp; Bilan</p>
       <div class="deux-cols">
         <div class="bloc-texte">
-          <h3 style="color:var(--vert)">✅ Points forts</h3>
-          <p>Bonne maîtrise de Python et des requêtes API REST. Traitement de données JSON propre et structuré.</p>
+          <h3 style="color:var(--vert)">Points forts</h3>
+          <p>Trés bonne maîtrise de Python et des requêtes API REST. Traitement de données JSON propre et structuré.</p>
         </div>
         <div class="bloc-texte">
-          <h3 style="color:var(--orange)">⚠️ À améliorer</h3>
-          <p>Gestion des erreurs réseau pourrait être plus robuste. La visualisation cartographique n'a pas été développée par manque de temps.</p>
+          <h3 style="color:var(--orange)">Les difficultés rencontrées</h3>
+          <p>Nous avons rencontré quelque difficulté pour faire la map et pour centrer le point rouge sur ce que l'on voulait. Mais cela à fonctionné aprés car le prof nous à donné des indications.</p>
         </div>
       </div>
     </div>
@@ -359,11 +330,32 @@
          <div class="legende">Ma légende</div>
        </div>
   -->
+
   <section class="section-projet">
     <div class="contenu">
       <p class="section-titre">Galerie photos &amp; captures</p>
       <div class="galerie">
-<p style="font-size:0.83rem;color:var(--gris)">Aucune photo pour ce projet. Ajoutez les images dans le dossier et renseignez-les dans le code HTML.</p>      </div>
+               <div class="galerie-item-wrap" data-src="listesdesbus.png" data-legende="Ma légende">
+         <img src="listesdesbus.png" alt="Image du résultat de la requête API affichant une liste de bus à proximité">
+         <div class="legende">Résultat du programme de la liste des bus pour la ville de Lyon (Fiche OSM)</div> 
+       </div>
+       <div class="galerie-item-wrap" data-src="Restaurant.png" data-legende="Ma légende">
+         <img src="Restaurant.png" alt="Image du résultat de la requête API affichant une liste de restaurants à proximité">
+         <div class="legende">Résultat du programme qui liste les information d'un node sur OpenStreetMap</div>
+       </div>
+       <div class="galerie-item-wrap" data-src="mddurestaurant.png" data-legende="Ma légende">
+         <img src="mddurestaurant.png" alt="Image du résultat de la requête API affichant une liste de restaurants à proximité">
+         <div class="legende">Voici une capture de notre fichier en markdown des statistiques des restaurants à Lyon</div>
+      </div>
+       <div class="galerie-item-wrap" data-src="statsbusmd.png" data-legende="Ma légende">
+         <img src="statsbusmd.png" alt="Image du résultat de la requête API affichant une liste de restaurants à proximité">
+         <div class="legende">Voici une capture de notre fichier des statistiques des bus à Lyon qui ensuite vas être utilisé pour etre transformé en fichier html grace à la fonction convert</div>
+      </div>
+       <div class="galerie-item-wrap" data-src="imagedelafonctioncodnverte.png" data-legende="Ma légende">
+         <img src="imagedelafonctioncodnverte.png" alt="Image de la fonction convert">
+         <div class="legende">Voici une capture de la fonction convert qui est une fonction clef dans notre projet elle permet de convertir nos fichiers markdown en fichiers html</div>
+       </div>
+      </div>
     </div>
   </section>
 
@@ -377,7 +369,7 @@
     <div class="contenu">
       <p class="section-titre">Fichiers du projet</p>
       <div class="fichiers-list">
-<p style="font-size:0.83rem;color:var(--gris)">Ajoutez vos fichiers ici en modifiant le HTML.</p>      </div>
+<p style="font-size:0.83rem;color:var(--gris)"><a href="SAE15.zip" download class="fichier-item">📩 Télécharger le fichier ZIP</a></p>      </div>
     </div>
   </section>
 
