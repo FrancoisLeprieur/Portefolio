@@ -8,10 +8,9 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
   <style>
-    /* ── PAGE PROJET SPÉCIFIQUE ── */
+    /* ── PAGE PROJET ── */
     .projet-page { padding-top: 5rem; }
 
-    /* HERO PROJET */
     .projet-hero {
       background: var(--blanc);
       border-bottom: 1px solid var(--bordure);
@@ -29,12 +28,6 @@
     }
     .retour:hover { color: var(--bleu); }
 
-    .projet-hero-grille {
-      display: grid;
-      grid-template-columns: 1fr auto;
-      gap: 2rem;
-      align-items: flex-start;
-    }
     .projet-hero h1 {
       font-size: 2rem;
       font-weight: 800;
@@ -64,27 +57,6 @@
       color: var(--gris);
     }
 
-    /* MODE EDIT toggle */
-    .btn-edit-toggle {
-      display: flex;
-      align-items: center;
-      gap: 0.45rem;
-      background: var(--fond);
-      border: 1px solid var(--bordure);
-      color: var(--texte);
-      padding: 0.5rem 1rem;
-      border-radius: 8px;
-      font-size: 0.8rem;
-      font-weight: 600;
-      cursor: pointer;
-      font-family: inherit;
-      transition: all 0.15s;
-      white-space: nowrap;
-    }
-    .btn-edit-toggle:hover { border-color: var(--bleu); color: var(--bleu); }
-    .btn-edit-toggle.actif { background: var(--bleu); color: white; border-color: var(--bleu); }
-
-    /* SECTIONS */
     .section-projet {
       padding: 2.5rem 0;
       border-bottom: 1px solid var(--bordure);
@@ -100,37 +72,6 @@
       margin-bottom: 0.9rem;
     }
 
-    /* CHAMPS ÉDITABLES */
-    .champ-editable {
-      position: relative;
-      border-radius: 8px;
-      transition: background 0.15s;
-    }
-    body.mode-edition .champ-editable {
-      background: #f0f7ff;
-      outline: 2px dashed #bfdbfe;
-      padding: 0.5rem 0.6rem;
-    }
-    body.mode-edition .champ-editable::after {
-      content: '✏️ Cliquez pour éditer';
-      position: absolute;
-      top: -1.4rem;
-      right: 0;
-      font-size: 0.62rem;
-      color: var(--bleu);
-      font-weight: 600;
-      opacity: 0;
-      transition: opacity 0.15s;
-      pointer-events: none;
-    }
-    body.mode-edition .champ-editable:hover::after { opacity: 1; }
-
-    [contenteditable="true"] {
-      outline: none;
-      min-height: 1.2em;
-    }
-
-    /* Résumé projet */
     .resume-texte {
       font-size: 0.95rem;
       color: #444;
@@ -138,7 +79,6 @@
       max-width: 720px;
     }
 
-    /* GRILLE INFOS */
     .infos-projet {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
@@ -146,12 +86,7 @@
       margin-bottom: 2rem;
     }
 
-    /* COMPÉTENCES TRAVAILLÉES */
-    .comp-list {
-      display: flex;
-      flex-direction: column;
-      gap: 0.5rem;
-    }
+    .comp-list { display: flex; flex-direction: column; gap: 0.5rem; }
     .comp-item {
       display: flex;
       gap: 0.7rem;
@@ -173,188 +108,7 @@
       flex-shrink: 0;
       margin-top: 2px;
     }
-    /* Bouton supprimer compétence */
-    body.mode-edition .comp-item { padding-right: 2.2rem; position: relative; }
-    .comp-item .btn-del {
-      display: none;
-      position: absolute;
-      right: 0.5rem;
-      top: 50%;
-      transform: translateY(-50%);
-      background: none;
-      border: none;
-      cursor: pointer;
-      color: #f97316;
-      font-size: 0.9rem;
-      padding: 0;
-    }
-    body.mode-edition .comp-item .btn-del { display: block; }
 
-    /* Bouton ajouter */
-    .btn-ajouter {
-      display: none;
-      align-items: center;
-      gap: 0.35rem;
-      background: none;
-      border: 1px dashed var(--bordure);
-      color: var(--gris);
-      padding: 0.45rem 0.85rem;
-      border-radius: 8px;
-      font-size: 0.78rem;
-      cursor: pointer;
-      font-family: inherit;
-      margin-top: 0.5rem;
-      transition: all 0.15s;
-    }
-    .btn-ajouter:hover { border-color: var(--bleu); color: var(--bleu); }
-    body.mode-edition .btn-ajouter { display: flex; }
-
-    /* GALERIE PHOTOS */
-    .galerie {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-      gap: 1rem;
-    }
-    .galerie-item {
-      border-radius: 10px;
-      overflow: hidden;
-      border: 1px solid var(--bordure);
-      background: var(--fond);
-      aspect-ratio: 16/10;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      position: relative;
-    }
-    .galerie-item img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-    .galerie-placeholder {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 0.4rem;
-      color: var(--gris);
-      font-size: 0.78rem;
-      text-align: center;
-      padding: 1rem;
-      cursor: pointer;
-      width: 100%;
-      height: 100%;
-      justify-content: center;
-      transition: background 0.15s;
-    }
-    .galerie-placeholder:hover { background: var(--bleu-bg); }
-    .galerie-placeholder .icone-upload { font-size: 1.8rem; }
-
-    body:not(.mode-edition) .galerie-placeholder { cursor: default; pointer-events: none; }
-    body:not(.mode-edition) .galerie-item.vide { display: none; }
-
-    .btn-del-photo {
-      display: none;
-      position: absolute;
-      top: 0.5rem;
-      right: 0.5rem;
-      background: rgba(0,0,0,0.55);
-      border: none;
-      color: white;
-      border-radius: 50%;
-      width: 26px;
-      height: 26px;
-      font-size: 0.85rem;
-      cursor: pointer;
-      align-items: center;
-      justify-content: center;
-    }
-    body.mode-edition .galerie-item:not(.vide) .btn-del-photo { display: flex; }
-
-    /* LÉGENDE PHOTO */
-    .legende {
-      font-size: 0.72rem;
-      color: var(--gris);
-      padding: 0.45rem 0.6rem;
-      background: var(--blanc);
-      border-top: 1px solid var(--bordure);
-      text-align: center;
-    }
-    .galerie-item-wrap {
-      border-radius: 10px;
-      overflow: hidden;
-      border: 1px solid var(--bordure);
-      background: var(--fond);
-      position: relative;
-    }
-    .galerie-item-wrap .galerie-item {
-      border-radius: 0;
-      border: none;
-    }
-
-    /* BARRE DE SAUVEGARDE */
-    .barre-save {
-      position: fixed;
-      bottom: 0; left: 0; right: 0;
-      background: white;
-      border-top: 1px solid var(--bordure);
-      padding: 0.85rem 2.5rem;
-      display: none;
-      justify-content: space-between;
-      align-items: center;
-      z-index: 200;
-      box-shadow: 0 -4px 20px rgba(0,0,0,0.07);
-    }
-    body.mode-edition .barre-save { display: flex; }
-    .barre-save p { font-size: 0.83rem; color: var(--gris); }
-    .barre-save .actions { display: flex; gap: 0.6rem; }
-    .btn-save {
-      background: var(--vert);
-      color: white;
-      border: none;
-      padding: 0.5rem 1.2rem;
-      border-radius: 6px;
-      font-size: 0.82rem;
-      font-weight: 600;
-      cursor: pointer;
-      font-family: inherit;
-      transition: opacity 0.15s;
-    }
-    .btn-save:hover { opacity: 0.85; }
-    .btn-annuler {
-      background: none;
-      border: 1px solid var(--bordure);
-      color: var(--gris);
-      padding: 0.5rem 1rem;
-      border-radius: 6px;
-      font-size: 0.82rem;
-      cursor: pointer;
-      font-family: inherit;
-      transition: all 0.15s;
-    }
-    .btn-annuler:hover { border-color: #f97316; color: #f97316; }
-
-    /* Toast */
-    .toast {
-      position: fixed;
-      bottom: 5rem;
-      left: 50%;
-      transform: translateX(-50%) translateY(1rem);
-      background: #111;
-      color: white;
-      padding: 0.6rem 1.4rem;
-      border-radius: 8px;
-      font-size: 0.82rem;
-      font-weight: 600;
-      opacity: 0;
-      transition: all 0.25s;
-      z-index: 300;
-    }
-    .toast.visible {
-      opacity: 1;
-      transform: translateX(-50%) translateY(0);
-    }
-
-    /* SECTION CONTEXTE / MÉTHODE en 2 colonnes */
     .deux-cols {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -366,23 +120,109 @@
       border-radius: 12px;
       padding: 1.3rem 1.4rem;
     }
-    .bloc-texte h3 {
-      font-size: 0.82rem;
-      font-weight: 700;
-      margin-bottom: 0.7rem;
-      color: var(--texte);
+    .bloc-texte h3 { font-size: 0.82rem; font-weight: 700; margin-bottom: 0.7rem; color: var(--texte); }
+    .bloc-texte p { font-size: 0.85rem; color: #555; line-height: 1.75; }
+
+    /* GALERIE */
+    .galerie {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 1rem;
     }
-    .bloc-texte p {
-      font-size: 0.85rem;
-      color: #555;
-      line-height: 1.75;
+    .galerie-item-wrap {
+      border-radius: 10px;
+      overflow: hidden;
+      border: 1px solid var(--bordure);
+      background: var(--fond);
+      cursor: zoom-in;
+      transition: box-shadow 0.2s, transform 0.2s;
+    }
+    .galerie-item-wrap:hover {
+      box-shadow: 0 6px 24px rgba(37,99,235,0.12);
+      transform: translateY(-2px);
+    }
+    .galerie-item-wrap img {
+      width: 100%;
+      aspect-ratio: 16/10;
+      object-fit: cover;
+      display: block;
+    }
+    .legende {
+      font-size: 0.72rem;
+      color: var(--gris);
+      padding: 0.45rem 0.8rem;
+      background: var(--blanc);
+      border-top: 1px solid var(--bordure);
+      text-align: center;
     }
 
-    @media (max-width: 768px) {
-      .projet-hero-grille, .deux-cols { grid-template-columns: 1fr; }
-      .barre-save { padding: 0.85rem 1rem; }
+    /* LIGHTBOX */
+    .lightbox {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.88);
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+      cursor: zoom-out;
+      padding: 2rem;
     }
-  </style>
+    .lightbox.open { display: flex; }
+    .lightbox img {
+      max-width: 90vw;
+      max-height: 85vh;
+      object-fit: contain;
+      border-radius: 8px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+    }
+    .lightbox-legende {
+      position: fixed;
+      bottom: 1.5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      color: rgba(255,255,255,0.7);
+      font-size: 0.8rem;
+      text-align: center;
+      max-width: 600px;
+    }
+    .lightbox-close {
+      position: fixed;
+      top: 1.2rem;
+      right: 1.5rem;
+      color: white;
+      font-size: 1.8rem;
+      cursor: pointer;
+      line-height: 1;
+      opacity: 0.7;
+      transition: opacity 0.15s;
+    }
+    .lightbox-close:hover { opacity: 1; }
+
+    /* FICHIERS */
+    .fichiers-list { display: flex; flex-direction: column; gap: 0.6rem; }
+    .fichier-item {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      background: var(--blanc);
+      border: 1px solid var(--bordure);
+      border-radius: 8px;
+      padding: 0.8rem 1rem;
+      text-decoration: none;
+      color: var(--texte);
+      transition: border-color 0.15s;
+    }
+    .fichier-item:hover { border-color: #bfdbfe; }
+    .fichier-item .fichier-icone { font-size: 1.3rem; }
+    .fichier-nom { font-size: 0.85rem; font-weight: 700; }
+    .fichier-desc { font-size: 0.72rem; color: var(--gris); }
+    .fichier-dl { margin-left: auto; font-size: 0.75rem; color: var(--bleu); font-weight: 600; }
+
+    @media (max-width: 768px) {
+      .deux-cols { grid-template-columns: 1fr; }
+    }
+</style>
 </head>
 <body>
 
@@ -403,60 +243,50 @@
   <div class="projet-hero">
     <div class="contenu">
       <a href="index.html#projets" class="retour">← Retour aux projets</a>
-
-      <div class="projet-hero-grille">
-        <div>
-          <div class="projet-meta">
-            <span class="projet-icone champ-editable" id="icone" style="font-size:1.6rem">🏢</span>
-            <span class="badge-semestre champ-editable" id="semestre">SAÉ — S1/S2</span>
-            <span class="badge-niveau">
-              <span class="point vert"></span>
-              <span class="champ-editable" id="niveau">Compétent</span>
-            </span>
-          </div>
-          <h1 class="champ-editable" id="titre">Réseau d'entreprise de 120 personnes</h1>
-          <div class="tags" style="margin-top:0.7rem" id="tags-container">
-            <span class="tag bleu champ-editable" data-tag>VLAN</span>
-            <span class="tag bleu champ-editable" data-tag>Routage inter-VLAN</span>
-            <span class="tag bleu champ-editable" data-tag>Adressage IP</span>
-            <span class="tag bleu champ-editable" data-tag>Proxmox</span>
-            <span class="tag champ-editable" data-tag>Groupe de 5</span>
-            </div>
-          <button class="btn-ajouter" id="btn-ajout-tag" style="margin-top:0.5rem">+ Ajouter un tag</button>
-        </div>
-        <button class="btn-edit-toggle" id="btn-edition" onclick="toggleEdition()">
-          ✏️ Modifier
-        </button>
+      <div class="projet-meta">
+        <span style="font-size:1.6rem">🏢</span>
+        <span class="badge-semestre">SAÉ — S1/S2</span>
+        <span class="badge-niveau">
+          <span class="point vert"></span>
+          Compétent
+        </span>
+      </div>
+      <h1>Réseau d'entreprise de 120 personnes</h1>
+      <div class="tags" style="margin-top:0.7rem">
+        <span class="tag bleu">VLAN</span>
+            <span class="tag bleu">Routage inter-VLAN</span>
+            <span class="tag bleu">Adressage IP</span>
+            <span class="tag bleu">Proxmox</span>
+            <span class="tag">Groupe de 5</span>
+            
       </div>
     </div>
   </div>
 
-  <!-- CONTENU -->
+  <!-- PRÉSENTATION -->
   <section class="section-projet">
     <div class="contenu">
       <p class="section-titre">Présentation</p>
-
       <div class="infos-projet">
         <div class="info-ligne">
           <div class="label">Catégorie</div>
-          <div class="valeur champ-editable" id="categorie">RT1 — Réseaux</div>
+          <div class="valeur">RT1 — Réseaux</div>
         </div>
         <div class="info-ligne">
           <div class="label">Période</div>
-          <div class="valeur champ-editable" id="periode">Semestres 1 &amp; 2</div>
+          <div class="valeur">Semestres 1 &amp; 2</div>
         </div>
         <div class="info-ligne">
           <div class="label">Format</div>
-          <div class="valeur champ-editable" id="format">Groupe de 5</div>
+          <div class="valeur">Groupe de 5</div>
         </div>
         <div class="info-ligne">
           <div class="label">Rôle</div>
-          <div class="valeur champ-editable" id="role">Configuration réseaux &amp; VMs</div>
+          <div class="valeur">Configuration réseaux &amp; VMs</div>
         </div>
       </div>
-
       <p class="section-titre">Résumé</p>
-      <p class="resume-texte champ-editable" id="resume">Conception et administration d'un réseau complet pour une entreprise de 120 utilisateurs : plan d'adressage IP, création et configuration de VLANs, routage inter-VLAN, et déploiement de machines virtuelles sur Proxmox. Projet réalisé en groupe de 5.</p>
+      <p class="resume-texte">Conception et administration d'un réseau complet pour une entreprise de 120 utilisateurs : plan d'adressage IP, création et configuration de VLANs, routage inter-VLAN, et déploiement de machines virtuelles sur Proxmox.</p>
     </div>
   </section>
 
@@ -467,11 +297,11 @@
       <div class="deux-cols">
         <div class="bloc-texte">
           <h3>📋 Contexte</h3>
-          <p class="champ-editable" id="contexte">Projet SAÉ (Situation d'Apprentissage et d'Évaluation) réalisé en 1ère année de BUT R&T. L'objectif était de simuler la mise en place d'une infrastructure réseau réelle pour une entreprise fictive de 120 employés répartis en plusieurs services.</p>
+          <p>Projet SAÉ réalisé en 1ère année de BUT R&T. L'objectif était de simuler la mise en place d'une infrastructure réseau réelle pour une entreprise fictive de 120 employés répartis en plusieurs services.</p>
         </div>
         <div class="bloc-texte">
           <h3>🔧 Méthode &amp; Outils</h3>
-          <p class="champ-editable" id="methode">Nous avons commencé par définir le plan d'adressage IP puis configuré les VLANs sur les switches. La partie routage inter-VLAN a été réalisée sur un routeur central. Proxmox a été utilisé pour déployer les machines virtuelles de chaque département.</p>
+          <p>Nous avons commencé par définir le plan d'adressage IP puis configuré les VLANs sur les switches. La partie routage inter-VLAN a été réalisée sur un routeur central. Proxmox a été utilisé pour déployer les machines virtuelles de chaque département.</p>
         </div>
       </div>
     </div>
@@ -481,91 +311,84 @@
   <section class="section-projet">
     <div class="contenu">
       <p class="section-titre">Compétences &amp; Apprentissages critiques</p>
-      <div class="comp-list" id="comp-list">
+      <div class="comp-list">
         <div class="comp-item">
           <span class="code">AC11.02</span>
-          <span class="champ-editable">Architecture et fondements des systèmes numériques</span>
-          <button class="btn-del" onclick="supprimerComp(this)">✕</button>
+          <span>Architecture et fondements des systèmes numériques</span>
         </div>
         <div class="comp-item">
           <span class="code">AC11.03</span>
-          <span class="champ-editable">Configurer les fonctions de base du réseau local</span>
-          <button class="btn-del" onclick="supprimerComp(this)">✕</button>
+          <span>Configurer les fonctions de base du réseau local</span>
         </div>
         <div class="comp-item">
           <span class="code">AC11.04</span>
-          <span class="champ-editable">Maîtriser les rôles des systèmes d'exploitation</span>
-          <button class="btn-del" onclick="supprimerComp(this)">✕</button>
+          <span>Maîtriser les rôles des systèmes d'exploitation</span>
         </div>
         <div class="comp-item">
           <span class="code">AC11.05</span>
-          <span class="champ-editable">Identifier les dysfonctionnements réseau</span>
-          <button class="btn-del" onclick="supprimerComp(this)">✕</button>
+          <span>Identifier les dysfonctionnements réseau</span>
         </div>
       </div>
-        <div class="comp-item">
-          <span class="code">AC11.03</span>
-          <span class="champ-editable">Configurer les fonctions de base du réseau local</span>
-          <button class="btn-del" onclick="supprimerComp(this)">✕</button>
-        </div>
-        <div class="comp-item">
-          <span class="code">AC11.04</span>
-          <span class="champ-editable">Maîtriser les rôles des systèmes d'exploitation</span>
-          <button class="btn-del" onclick="supprimerComp(this)">✕</button>
-        </div>
-        <div class="comp-item">
-          <span class="code">AC11.05</span>
-          <span class="champ-editable">Identifier les dysfonctionnements réseau</span>
-          <button class="btn-del" onclick="supprimerComp(this)">✕</button>
-        </div>
-      </div>
-      <button class="btn-ajouter" onclick="ajouterComp()">+ Ajouter une compétence</button>
     </div>
   </section>
 
-  <!-- RÉSULTATS / BILAN -->
+  <!-- BILAN -->
   <section class="section-projet" style="background:var(--blanc)">
     <div class="contenu">
       <p class="section-titre">Résultats &amp; Bilan</p>
       <div class="deux-cols">
         <div class="bloc-texte">
           <h3 style="color:var(--vert)">✅ Points forts</h3>
-          <p class="champ-editable" id="points-forts">Bonne maîtrise du plan d'adressage et de la segmentation réseau. Configuration fonctionnelle du routage inter-VLAN. Travail en équipe efficace avec répartition claire des tâches.</p>
+          <p>Bonne maîtrise du plan d'adressage et de la segmentation réseau. Configuration fonctionnelle du routage inter-VLAN. Travail en équipe efficace.</p>
         </div>
         <div class="bloc-texte">
           <h3 style="color:var(--orange)">⚠️ À améliorer</h3>
-          <p class="champ-editable" id="points-faibles">La partie services réseau (DHCP centralisé, DNS) pourrait être approfondie. La documentation technique finale manquait de détails sur la procédure de dépannage.</p>
+          <p>La partie services réseau (DHCP centralisé, DNS) pourrait être approfondie. La documentation technique finale manquait de détails sur la procédure de dépannage.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- GALERIE PHOTOS -->
+  <!-- GALERIE -->
+  <!--
+    POUR AJOUTER DES PHOTOS :
+    1. Mets tes images dans le dossier portfolio/
+    2. Remplace les exemples ci-dessous par :
+       <div class="galerie-item-wrap" data-src="ma-photo.png" data-legende="Ma légende">
+         <img src="ma-photo.png" alt="description">
+         <div class="legende">Ma légende</div>
+       </div>
+  -->
   <section class="section-projet">
     <div class="contenu">
       <p class="section-titre">Galerie photos &amp; captures</p>
-      <p style="font-size:0.82rem;color:var(--gris);margin-bottom:1.2rem" id="galerie-hint">
-        En mode édition, cliquez sur une case pour ajouter une photo.
-      </p>
-      <div class="galerie" id="galerie">
-        <!-- Les items de galerie sont générés par JS -->
-      </div>
-      <button class="btn-ajouter" id="btn-ajout-photo" onclick="ajouterSlotPhoto()">+ Ajouter un emplacement photo</button>
+      <div class="galerie">
+<p style="font-size:0.83rem;color:var(--gris)">Aucune photo pour ce projet. Ajoutez les images dans le dossier et renseignez-les dans le code HTML.</p>      </div>
     </div>
   </section>
 
-</div><!-- fin projet-page -->
+  <!-- FICHIERS À TÉLÉCHARGER -->
+  <!--
+    POUR AJOUTER UN FICHIER :
+    1. Mets le fichier (.zip, .py, .pdf…) dans le dossier portfolio/
+    2. Ajoute un bloc <a href="monfichier.zip" download class="fichier-item"> ci-dessous
+  -->
+  <section class="section-projet" style="background:var(--blanc)">
+    <div class="contenu">
+      <p class="section-titre">Fichiers du projet</p>
+      <div class="fichiers-list">
+<p style="font-size:0.83rem;color:var(--gris)">Ajoutez vos fichiers ici en modifiant le HTML.</p>      </div>
+    </div>
+  </section>
 
-<!-- BARRE DE SAUVEGARDE -->
-<div class="barre-save">
-  <p>Mode édition activé — vos modifications sont sauvegardées localement.</p>
-  <div class="actions">
-    <button class="btn-annuler" onclick="annulerEdition()">Annuler</button>
-    <button class="btn-save" onclick="sauvegarder()">💾 Sauvegarder</button>
-  </div>
 </div>
 
-<div class="toast" id="toast"></div>
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox">
+  <span class="lightbox-close" onclick="document.getElementById('lightbox').classList.remove('open')">✕</span>
+  <img id="lb-img" src="" alt="Photo agrandie">
+  <div class="lightbox-legende" id="lb-legende"></div>
+</div>
 
 <footer>
   <div class="nom">François Leprieur</div>
@@ -579,271 +402,24 @@
   </ul>
 </footer>
 
-<input type="file" id="file-input" accept="image/*" style="display:none">
-
 <script>
-  // ── CLÉS DE STOCKAGE ──
-  const PAGE_KEY = 'projet_' + location.pathname.split('/').pop().replace('.html','');
 
-  // ── INIT GALERIE (slots vides par défaut) ──
-  const NB_SLOTS_DEFAUT = 4;
-  let photoSlots = [];
-
-  function initGalerie() {
-    const saved = localStorage.getItem(PAGE_KEY + '_photos');
-    if (saved) {
-      photoSlots = JSON.parse(saved);
-    } else {
-      photoSlots = Array(NB_SLOTS_DEFAUT).fill(null).map(() => ({ src: null, legende: '' }));
-    }
-    renderGalerie();
-  }
-
-  function renderGalerie() {
-    const galerie = document.getElementById('galerie');
-    galerie.innerHTML = '';
-    photoSlots.forEach((slot, i) => {
-      const wrap = document.createElement('div');
-      wrap.className = 'galerie-item-wrap';
-
-      if (slot.src) {
-        wrap.innerHTML = `
-          <div class="galerie-item">
-            <img src="${slot.src}" alt="Photo du projet ${i+1}">
-            <button class="btn-del-photo" onclick="supprimerPhoto(${i})" title="Supprimer">✕</button>
-          </div>
-          <div class="legende">
-            <span class="champ-editable legende-text" data-slot="${i}" 
-              ${document.body.classList.contains('mode-edition') ? 'contenteditable="true"' : ''}
-            >${slot.legende || 'Cliquez pour ajouter une légende…'}</span>
-          </div>
-        `;
-      } else {
-        wrap.className += ' vide';
-        wrap.style.aspectRatio = '16/10';
-        wrap.style.borderRadius = '10px';
-        wrap.style.overflow = 'hidden';
-        wrap.style.border = '1px solid var(--bordure)';
-        wrap.innerHTML = `
-          <div class="galerie-item vide" style="aspect-ratio:16/10;display:flex;align-items:center;justify-content:center;background:var(--fond);cursor:pointer" onclick="choisirPhoto(${i})">
-            <div class="galerie-placeholder">
-              <span class="icone-upload">📷</span>
-              <span>Cliquer pour ajouter<br>une photo ou capture</span>
-            </div>
-          </div>
-        `;
-      }
-      galerie.appendChild(wrap);
+  // LIGHTBOX
+  document.querySelectorAll('.galerie-item-wrap[data-src]').forEach(wrap => {
+    wrap.addEventListener('click', () => {
+      const lb = document.getElementById('lightbox');
+      document.getElementById('lb-img').src = wrap.dataset.src;
+      document.getElementById('lb-legende').textContent = wrap.dataset.legende || '';
+      lb.classList.add('open');
     });
-
-    // Hint
-    const hint = document.getElementById('galerie-hint');
-    if (hint) hint.style.display = document.body.classList.contains('mode-edition') ? 'block' : 'none';
-  }
-
-  // ── CHOISIR PHOTO ──
-  let slotCourant = null;
-  function choisirPhoto(idx) {
-    if (!document.body.classList.contains('mode-edition')) return;
-    slotCourant = idx;
-    document.getElementById('file-input').click();
-  }
-
-  document.getElementById('file-input').addEventListener('change', function(e) {
-    const file = e.target.files[0];
-    if (!file || slotCourant === null) return;
-    const reader = new FileReader();
-    reader.onload = function(ev) {
-      photoSlots[slotCourant].src = ev.target.result;
-      renderGalerie();
-      this.value = '';
-      slotCourant = null;
-    }.bind(this);
-    reader.readAsDataURL(file);
+  });
+  document.getElementById('lightbox').addEventListener('click', () => {
+    document.getElementById('lightbox').classList.remove('open');
+  });
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') document.getElementById('lightbox').classList.remove('open');
   });
 
-  function supprimerPhoto(idx) {
-    photoSlots[idx].src = null;
-    renderGalerie();
-  }
-
-  function ajouterSlotPhoto() {
-    photoSlots.push({ src: null, legende: '' });
-    renderGalerie();
-  }
-
-  // ── LÉGENDES ──
-  document.getElementById('galerie').addEventListener('blur', function(e) {
-    if (e.target.classList.contains('legende-text')) {
-      const idx = parseInt(e.target.dataset.slot);
-      photoSlots[idx].legende = e.target.textContent;
-    }
-  }, true);
-
-  // ── MODE ÉDITION ──
-  function toggleEdition() {
-    const body = document.body;
-    const btn = document.getElementById('btn-edition');
-    body.classList.toggle('mode-edition');
-    const isEdit = body.classList.contains('mode-edition');
-    btn.textContent = isEdit ? '👁 Aperçu' : '✏️ Modifier';
-    btn.classList.toggle('actif', isEdit);
-
-    // Activer/désactiver contenteditable sur tous les champs
-    document.querySelectorAll('.champ-editable').forEach(el => {
-      el.setAttribute('contenteditable', isEdit ? 'true' : 'false');
-    });
-
-    // Légendes
-    document.querySelectorAll('.legende-text').forEach(el => {
-      el.setAttribute('contenteditable', isEdit ? 'true' : 'false');
-    });
-
-    renderGalerie();
-  }
-
-  function annulerEdition() {
-    chargerDonnees();
-    document.body.classList.remove('mode-edition');
-    const btn = document.getElementById('btn-edition');
-    btn.textContent = '✏️ Modifier';
-    btn.classList.remove('actif');
-    document.querySelectorAll('.champ-editable').forEach(el => {
-      el.setAttribute('contenteditable', 'false');
-    });
-    renderGalerie();
-  }
-
-  // ── COMPÉTENCES ──
-  function ajouterComp() {
-    const code = prompt('Code AC (ex: AC11.06) :');
-    if (!code) return;
-    const texte = prompt('Description :');
-    if (!texte) return;
-    const list = document.getElementById('comp-list');
-    const item = document.createElement('div');
-    item.className = 'comp-item';
-    item.innerHTML = `
-      <span class="code">${code}</span>
-      <span class="champ-editable" contenteditable="true">${texte}</span>
-      <button class="btn-del" onclick="supprimerComp(this)">✕</button>
-    `;
-    list.appendChild(item);
-  }
-
-  function supprimerComp(btn) {
-    btn.closest('.comp-item').remove();
-  }
-
-  // ── TAGS ──
-  document.getElementById('btn-ajout-tag').addEventListener('click', function() {
-    const texte = prompt('Nom du tag :');
-    if (!texte) return;
-    const type = prompt('Couleur du tag (bleu/vert/orange ou vide pour gris) :');
-    const container = document.getElementById('tags-container');
-    const span = document.createElement('span');
-    span.className = 'tag champ-editable ' + (type || '');
-    span.setAttribute('data-tag', '');
-    span.setAttribute('contenteditable', 'true');
-    span.textContent = texte;
-    container.appendChild(span);
-  });
-
-  // ── SAUVEGARDE LOCALSTORAGE ──
-  function collecterDonnees() {
-    const ids = ['icone','semestre','niveau','titre','categorie','periode','format',
-                 'role','resume','contexte','methode','points-forts','points-faibles'];
-    const data = {};
-    ids.forEach(id => {
-      const el = document.getElementById(id);
-      if (el) data[id] = el.innerHTML;
-    });
-
-    // Tags
-    const tags = [];
-    document.querySelectorAll('[data-tag]').forEach(t => {
-      tags.push({ texte: t.textContent, classe: t.className });
-    });
-    data.tags = tags;
-
-    // Compétences
-    const comps = [];
-    document.querySelectorAll('.comp-item').forEach(item => {
-      comps.push({
-        code: item.querySelector('.code').textContent,
-        texte: item.querySelector('.champ-editable').textContent
-      });
-    });
-    data.comps = comps;
-
-    return data;
-  }
-
-  function sauvegarder() {
-    const data = collecterDonnees();
-    localStorage.setItem(PAGE_KEY, JSON.stringify(data));
-    localStorage.setItem(PAGE_KEY + '_photos', JSON.stringify(photoSlots));
-    showToast('✅ Sauvegardé !');
-  }
-
-  function chargerDonnees() {
-    const saved = localStorage.getItem(PAGE_KEY);
-    if (!saved) return;
-    const data = JSON.parse(saved);
-
-    const ids = ['icone','semestre','niveau','titre','categorie','periode','format',
-                 'role','resume','contexte','methode','points-forts','points-faibles'];
-    ids.forEach(id => {
-      const el = document.getElementById(id);
-      if (el && data[id]) el.innerHTML = data[id];
-    });
-
-    // Tags
-    if (data.tags) {
-      const container = document.getElementById('tags-container');
-      container.innerHTML = '';
-      data.tags.forEach(t => {
-        const span = document.createElement('span');
-        span.className = t.classe;
-        span.setAttribute('data-tag', '');
-        span.textContent = t.texte;
-        container.appendChild(span);
-      });
-    }
-
-    // Compétences
-    if (data.comps) {
-      const list = document.getElementById('comp-list');
-      list.innerHTML = '';
-      data.comps.forEach(c => {
-        const item = document.createElement('div');
-        item.className = 'comp-item';
-        item.innerHTML = `
-          <span class="code">${c.code}</span>
-          <span class="champ-editable" contenteditable="false">${c.texte}</span>
-          <button class="btn-del" onclick="supprimerComp(this)">✕</button>
-        `;
-        list.appendChild(item);
-      });
-    }
-  }
-
-  function showToast(msg) {
-    const t = document.getElementById('toast');
-    t.textContent = msg;
-    t.classList.add('visible');
-    setTimeout(() => t.classList.remove('visible'), 2500);
-  }
-
-  // ── INIT ──
-  chargerDonnees();
-  initGalerie();
-
-  // Désactiver contenteditable au départ
-  document.querySelectorAll('.champ-editable').forEach(el => {
-    el.setAttribute('contenteditable', 'false');
-  });
 </script>
-
 </body>
 </html>
