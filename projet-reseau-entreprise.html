@@ -245,13 +245,13 @@
       <a href="index.html#projets" class="retour">← Retour aux projets</a>
       <div class="projet-meta">
         <span style="font-size:1.6rem">🏢</span>
-        <span class="badge-semestre">SAÉ — S1/S2</span>
+        <span class="badge-semestre">Projet S1</span>
         <span class="badge-niveau">
           <span class="point vert"></span>
-          Compétent
+          Terminé
         </span>
       </div>
-      <h1>Réseau d'entreprise de 120 personnes</h1>
+      <h1>Création d'un réseau d'entreprise de 120 personnes</h1>
       <div class="tags" style="margin-top:0.7rem">
         <span class="tag bleu">VLAN</span>
             <span class="tag bleu">Routage inter-VLAN</span>
@@ -274,7 +274,7 @@
         </div>
         <div class="info-ligne">
           <div class="label">Période</div>
-          <div class="valeur">Semestres 1 &amp; 2</div>
+          <div class="valeur">Semestre 1</div>
         </div>
         <div class="info-ligne">
           <div class="label">Format</div>
@@ -297,53 +297,29 @@
       <div class="deux-cols">
         <div class="bloc-texte">
           <h3>📋 Contexte</h3>
-          <p>Projet SAÉ réalisé en 1ère année de BUT R&T. L'objectif était de simuler la mise en place d'une infrastructure réseau réelle pour une entreprise fictive de 120 employés répartis en plusieurs services.</p>
+          <p>L'objectif était de simuler la mise en place d'une infrastructure réseau réelle pour une entreprise fictive de 120 employés répartis en plusieurs services comme le service Ventes, Commercial, etc. Nous les avons différenciés avec différents VLANs. Le personnel devait également disposer d'un espace de partage Samba, d'un site web et de sessions accessibles depuis n'importe quel PC</p>
         </div>
         <div class="bloc-texte">
-          <h3>🔧 Méthode &amp; Outils</h3>
-          <p>Nous avons commencé par définir le plan d'adressage IP puis configuré les VLANs sur les switches. La partie routage inter-VLAN a été réalisée sur un routeur central. Proxmox a été utilisé pour déployer les machines virtuelles de chaque département.</p>
+          <h3>🔧 Les compétences développées</h3>
+          <p>Nous avons commencé par définir le plan d'adressage IP avec le schéma physique, puis configuré le branchement des ports, les VLANs et les modes de liens dans le schéma logique. Ensuite, le routage inter-VLAN a été réalisé sur un routeur central. Enfin, des templates ont été configurés puis déployés sur Proxmox pour instancier les machines virtuelles de chaque département.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- COMPÉTENCES -->
-  <section class="section-projet">
-    <div class="contenu">
-      <p class="section-titre">Compétences &amp; Apprentissages critiques</p>
-      <div class="comp-list">
-        <div class="comp-item">
-          <span class="code">AC11.02</span>
-          <span>Architecture et fondements des systèmes numériques</span>
-        </div>
-        <div class="comp-item">
-          <span class="code">AC11.03</span>
-          <span>Configurer les fonctions de base du réseau local</span>
-        </div>
-        <div class="comp-item">
-          <span class="code">AC11.04</span>
-          <span>Maîtriser les rôles des systèmes d'exploitation</span>
-        </div>
-        <div class="comp-item">
-          <span class="code">AC11.05</span>
-          <span>Identifier les dysfonctionnements réseau</span>
-        </div>
-      </div>
-    </div>
-  </section>
 
   <!-- BILAN -->
   <section class="section-projet" style="background:var(--blanc)">
     <div class="contenu">
-      <p class="section-titre">Résultats &amp; Bilan</p>
+      <p class="section-titre">Bilan</p>
       <div class="deux-cols">
         <div class="bloc-texte">
-          <h3 style="color:var(--vert)">✅ Points forts</h3>
-          <p>Bonne maîtrise du plan d'adressage et de la segmentation réseau. Configuration fonctionnelle du routage inter-VLAN. Travail en équipe efficace.</p>
+          <h3 style="color:var(--vert)"> Points forts</h3>
+          <p>Bonne maîtrise du plan d'adressage et de la segmentation réseau. Configuration fonctionnelle du routage inter-VLAN. Bonne capacité à résoudre des problèmes en équipe</p>
         </div>
         <div class="bloc-texte">
-          <h3 style="color:var(--orange)">⚠️ À améliorer</h3>
-          <p>La partie services réseau (DHCP centralisé, DNS) pourrait être approfondie. La documentation technique finale manquait de détails sur la procédure de dépannage.</p>
+          <h3 style="color:var(--orange)"> À améliorer</h3>
+          <p>La mise en commun a été assez compliquée à gérer, notamment à cause d'erreurs d'adressage IP sur le routeur central. Le problème a cependant été résolu grâce à la phase de tests prévue dans notre diagramme de Gantt</p>
         </div>
       </div>
     </div>
@@ -363,7 +339,19 @@
     <div class="contenu">
       <p class="section-titre">Galerie photos &amp; captures</p>
       <div class="galerie">
-<p style="font-size:0.83rem;color:var(--gris)">Aucune photo pour ce projet. Ajoutez les images dans le dossier et renseignez-les dans le code HTML.</p>      </div>
+        <div class="galerie-item-wrap" data-src="Schéma_logique.png" data-legende="Ma légende">
+         <img src="Schéma_logique.png" alt="description">
+         <div class="legende">Le schéma logique nous a permis de définir les plans d'adressage IP avec les différents VLANs et adresses de réseau, mais aussi de préciser les liens agrégés et les différents modes de liens (Trunk, Access et Mode routé) </div>
+       </div>
+       <div class="galerie-item-wrap" data-src="schéma physique de la SAE12.png" data-legende="Ma légende">
+         <img src="schéma physique de la SAE12.png" alt="description">
+         <div class="legende">Le schéma physique nous a permis de visualiser l'architecture réseau et les connexions entre les différents équipements physiques (numéros de ports), ainsi que les VLANs et l'adressage IP associé </div>
+       </div>
+       <div class="galerie-item-wrap" data-src="Diagramme_de_gantt_SAE12.png" data-legende="Ma légende">
+         <img src="Diagramme_de_gantt_SAE12.png" alt="description">
+         <div class="legende">Le diagramme de Gantt nous a permis de planifier les tâches et de suivre l'avancement du projet, ce qui s'est révélé très utile pour réagir rapidement en cas de problème lors de la mise en commun </div>
+       </div>
+<p style="font-size:0.83rem;color:var(--gris)"></p>      </div>
     </div>
   </section>
 
@@ -375,9 +363,9 @@
   -->
   <section class="section-projet" style="background:var(--blanc)">
     <div class="contenu">
-      <p class="section-titre">Fichiers du projet</p>
+      <p class="section-titre">🪚 Fichiers du projet</p>
       <div class="fichiers-list">
-<p style="font-size:0.83rem;color:var(--gris)">Ajoutez vos fichiers ici en modifiant le HTML.</p>      </div>
+<p style="font-size:0.83rem;color:var(--gris)"> <a href="SAE12.zip" download class="fichier-item">📩 Télécharger le fichier ZIP du projet les configurations</a></p>      </div>
     </div>
   </section>
 
