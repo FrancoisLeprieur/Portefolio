@@ -297,11 +297,11 @@
       <div class="deux-cols">
         <div class="bloc-texte">
           <h3>📋 Contexte</h3>
-          <p>L'objectif était de simuler la mise en place d'une infrastructure réseau réelle pour une entreprise fictive de 120 employés répartis en plusieurs services comme le service Ventes, Commercial, etc. Nous les avons différenciés avec différents VLANs. Le personnel devait également disposer d'un espace de partage Samba, d'un site web et de sessions accessibles depuis n'importe quel PC</p>
+          <p>L'objectif était de simuler la mise en place d'une infrastructure réseau réelle pour une entreprise fictive de 120 employés, répartis en plusieurs services (Ventes, Commercial, etc.), chacun isolé dans un VLAN dédié. Le personnel devait également disposer d'un espace de partage Samba, d'un site web interne et de sessions de travail accessibles depuis n'importe quel poste.</p>
         </div>
         <div class="bloc-texte">
           <h3>🔧 Les compétences développées</h3>
-          <p>Nous avons commencé par définir le plan d'adressage IP avec le schéma physique, puis configuré le branchement des ports, les VLANs et les modes de liens dans le schéma logique. Ensuite, le routage inter-VLAN a été réalisé sur un routeur central. Enfin, des templates ont été configurés puis déployés sur Proxmox pour instancier les machines virtuelles de chaque département.</p>
+          <p>Nous avons d'abord défini le plan d'adressage IP et le schéma physique, puis configuré les ports, les VLANs et les modes de liens (Trunk, Access, Mode routé) dans le schéma logique. Le routage inter-VLAN a ensuite été réalisé sur un routeur central. Enfin, des templates ont été configurés sur Proxmox pour déployer les machines virtuelles de chaque département.</p>
         </div>
       </div>
     </div>
@@ -315,11 +315,11 @@
       <div class="deux-cols">
         <div class="bloc-texte">
           <h3 style="color:var(--vert)"> Points forts</h3>
-          <p>Bonne maîtrise du plan d'adressage et de la segmentation réseau. Configuration fonctionnelle du routage inter-VLAN. Bonne capacité à résoudre des problèmes en équipe</p>
+          <p>Bonne maîtrise du plan d'adressage et de la segmentation réseau. Configuration fonctionnelle du routage inter-VLAN. Bonne capacité à résoudre des problèmes en équipe.</p>
         </div>
         <div class="bloc-texte">
           <h3 style="color:var(--orange)"> À améliorer</h3>
-          <p>La mise en commun a été assez compliquée à gérer, notamment à cause d'erreurs d'adressage IP sur le routeur central. Le problème a cependant été résolu grâce à la phase de tests prévue dans notre diagramme de Gantt</p>
+          <p>La mise en commun a été délicate, notamment à cause d'erreurs d'adressage IP sur le routeur central. Le problème a toutefois été identifié et corrigé lors de la phase de tests prévue dans notre diagramme de Gantt.</p>
         </div>
       </div>
     </div>
