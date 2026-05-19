@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Projets – François Leprieur</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .projets-page { padding-top: 5rem; }
+
+    /* ── PAGE HEADER ── */
+    .projets-header {
+      background: var(--blanc);
+      border-bottom: 1px solid var(--bordure);
+      padding: 3.5rem 0 2.5rem;
+    }
+    .projets-header h1 {
+      font-size: 2rem;
+      font-weight: 800;
+      line-height: 1.15;
+      margin-bottom: 0.4rem;
+    }
+    .projets-header p {
+      color: var(--gris);
+      font-size: 0.93rem;
+    }
+
+    /* ── STATS RAPIDES ── */
+    .stats-rapides {
+      display: flex;
+      gap: 0.8rem;
+      flex-wrap: wrap;
+      margin-top: 1.5rem;
+    }
+    .stat-pill {
+      background: var(--fond);
+      border: 1px solid var(--bordure);
+      border-radius: 8px;
+      padding: 0.55rem 1rem;
+      text-align: center;
+    }
+    .stat-pill .n { font-size: 1.2rem; font-weight: 800; color: var(--texte); line-height: 1; }
+    .stat-pill .l { font-size: 0.68rem; color: var(--gris); margin-top: 0.15rem; }
+
+    /* ── FILTRES ── */
+    .filtres-section {
+      padding: 1.8rem 0;
+      background: var(--fond);
+      border-bottom: 1px solid var(--bordure);
+      position: sticky;
+      top: 58px;
+      z-index: 50;
+    }
+    .filtres { display: flex; gap: 0.45rem; flex-wrap: wrap; }
+    .filtre {
+      background: var(--blanc);
+      border: 1px solid var(--bordure);
+      color: var(--gris);
+      padding: 0.35rem 1rem;
+      border-radius: 100px;
+      font-size: 0.78rem;
+      font-family: inherit;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+    .filtre:hover, .filtre.actif {
+      background: var(--bleu-bg);
+      border-color: #bfdbfe;
+      color: var(--bleu);
+    }
+
+    /* ── GRILLE PROJETS ── */
+    .projets-contenu { padding: 3rem 0; }
+    .grille-projets {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+      gap: 1.1rem;
+    }
+    .projet {
+      background: var(--blanc);
+      border: 1px solid var(--bordure);
+      border-radius: 12px;
+      padding: 1.3rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.7rem;
+      transition: box-shadow 0.2s, border-color 0.2s, opacity 0.2s;
+    }
+    .projet:hover {
+      border-color: #bfdbfe;
+      box-shadow: 0 4px 18px rgba(37,99,235,0.07);
+    }
+    .projet.masque { display: none; }
+
+    .projet-entete { display: flex; justify-content: space-between; align-items: center; }
+    .projet-icone { font-size: 1.4rem; }
+    .projet-semestre { font-size: 0.67rem; color: var(--gris); }
+    .projet h3 { font-size: 0.93rem; font-weight: 700; line-height: 1.3; }
+    .projet p { font-size: 0.82rem; color: #555; line-height: 1.65; flex: 1; }
+
+    .projet-pied {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 0.7rem;
+      border-top: 1px solid var(--bordure);
+    }
+    .niveau { display: flex; align-items: center; gap: 0.3rem; font-size: 0.68rem; color: var(--gris); }
+    .point { width: 7px; height: 7px; border-radius: 50%; }
+    .point.vert { background: #22c55e; }
+    .point.orange { background: #f97316; }
+    .point.bleu { background: var(--bleu); }
+
+    /* compteur de résultats */
+    .resultat-count {
+      font-size: 0.78rem;
+      color: var(--gris);
+      margin-bottom: 1.2rem;
+    }
+    .resultat-count strong { color: var(--texte); }
+
+    @media (max-width: 768px) {
+      .filtres-section { position: static; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="logo">François Leprieur</a>
+  <ul>
+    <li><a href="index.html#apropos">Profil</a></li>
+    <li><a href="projets.html" style="color:var(--bleu)">Projets</a></li>
+    <li><a href="index.html#bilan">Projet pro</a></li>
+  </ul>
+  <a href="https://www.linkedin.com/in/leprieur-fran%C3%A7ois-45450b387/" class="btn-nav" target="_blank">LinkedIn ↗</a>
+</nav>
+
+<div class="projets-page">
+
+  <!-- EN-TÊTE PAGE -->
+  <div class="projets-header">
+    <div class="contenu">
+      <a href="index.html" style="display:inline-flex;align-items:center;gap:0.4rem;font-size:0.78rem;color:var(--gris);text-decoration:none;margin-bottom:1.2rem;transition:color 0.15s;" onmouseover="this.style.color='var(--bleu)'" onmouseout="this.style.color='var(--gris)'">← Retour à l'accueil</a>
+      <p class="label-section">Réalisations</p>
+      <h1>Mes Projets</h1>
+      <p>Projets académiques (SAÉ) et personnels réalisés en 1ère année de BUT R&T.</p>
+      <div class="stats-rapides">
+        <div class="stat-pill"><div class="n">4</div><div class="l">Projets total</div></div>
+        <div class="stat-pill"><div class="n">1</div><div class="l">RT1 — Réseaux</div></div>
+        <div class="stat-pill"><div class="n">1</div><div class="l">RT2 — Transmissions</div></div>
+        <div class="stat-pill"><div class="n">2</div><div class="l">RT3 — Développement</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FILTRES (sticky) -->
+  <div class="filtres-section">
+    <div class="contenu">
+      <div class="filtres">
+        <button class="filtre actif" data-filtre="tous">Tous les projets</button>
+        <button class="filtre" data-filtre="rt1">RT1 — Réseaux</button>
+        <button class="filtre" data-filtre="rt2">RT2 — Transmissions</button>
+        <button class="filtre" data-filtre="rt3">RT3 — Développement</button>
+        <button class="filtre" data-filtre="perso">Projets perso</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- GRILLE -->
+  <div class="projets-contenu">
+    <div class="contenu">
+      <p class="resultat-count"><strong id="count">4</strong> projet(s) affiché(s)</p>
+
+      <div class="grille-projets">
+
+        <div class="projet" data-cat="rt1">
+          <div class="projet-entete">
+            <span class="projet-icone">🏢</span>
+            <span class="projet-semestre">Projet S1 · RT1</span>
+          </div>
+          <h3>Création d'un réseau d'entreprise de 120 personnes</h3>
+          <p>Conception et administration d'un réseau complet : plan d'adressage IP, VLANs, routage inter-VLAN et déploiement de machines virtuelles sur Proxmox. Projet réalisé en groupe de 5.</p>
+          <div class="tags">
+            <span class="tag bleu">VLAN</span>
+            <span class="tag bleu">Routage inter-VLAN</span>
+            <span class="tag bleu">Adressage IP</span>
+            <span class="tag bleu">Proxmox</span>
+            <span class="tag">Groupe de 5</span>
+          </div>
+          <div class="projet-pied">
+            <div class="niveau"><span class="point vert"></span>Terminé</div>
+          </div>
+          <a href="projet-reseau-entreprise.html" class="btn btn-vide" style="font-size:0.76rem;padding:0.35rem 0.9rem;text-align:center;">Voir le projet →</a>
+        </div>
+
+        <div class="projet" data-cat="rt2">
+          <div class="projet-entete">
+            <span class="projet-icone">💡</span>
+            <span class="projet-semestre">Projet S1 · RT2</span>
+          </div>
+          <h3>Mesures sur fibre optique et câble cuivre</h3>
+          <p>Étude des caractéristiques de liaisons filaires : atténuation, SNR, pertes par réflexion, longueur de câble. Utilisation d'appareils de mesure professionnels. Groupe de 4.</p>
+          <div class="tags">
+            <span class="tag orange">Fibre optique</span>
+            <span class="tag orange">Câble cuivre</span>
+            <span class="tag orange">Atténuation / SNR</span>
+            <span class="tag orange">OTDR</span>
+            <span class="tag">Groupe de 4</span>
+          </div>
+          <div class="projet-pied">
+            <div class="niveau"><span class="point vert"></span>Terminé</div>
+          </div>
+          <a href="projet-fibre-optique.html" class="btn btn-vide" style="font-size:0.76rem;padding:0.35rem 0.9rem;text-align:center;">Voir le projet →</a>
+        </div>
+
+        <div class="projet" data-cat="rt3">
+          <div class="projet-entete">
+            <span class="projet-icone">🗺️</span>
+            <span class="projet-semestre">Projet S1 · RT3</span>
+          </div>
+          <h3>Statistiques géographiques via API OpenStreetMap</h3>
+          <p>Programme Python effectuant des requêtes sur l'API Overpass pour récupérer des données géographiques et en extraire des statistiques. Traitement JSON et visualisation. Binôme.</p>
+          <div class="tags">
+            <span class="tag vert">Python</span>
+            <span class="tag vert">API REST</span>
+            <span class="tag vert">OpenStreetMap</span>
+            <span class="tag vert">JSON</span>
+            <span class="tag">Binôme</span>
+          </div>
+          <div class="projet-pied">
+            <div class="niveau"><span class="point vert"></span>Terminé</div>
+          </div>
+          <a href="projet-openstreetmap.html" class="btn btn-vide" style="font-size:0.76rem;padding:0.35rem 0.9rem;text-align:center;">Voir le projet →</a>
+        </div>
+
+        <div class="projet" data-cat="rt3">
+          <div class="projet-entete">
+            <span class="projet-icone">🌐</span>
+            <span class="projet-semestre">Projet S1 · RT3</span>
+          </div>
+          <h3>Site web dédié à une passion</h3>
+          <p>Conception et développement d'un site HTML/CSS sur le tennis. Versionnement Git/GitHub, design responsive et déploiement sur GitHub Pages. Utilisation de Trello pour la gestion de projet. Solo.</p>
+          <div class="tags">
+            <span class="tag vert">HTML / CSS</span>
+            <span class="tag vert">Git / GitHub</span>
+            <span class="tag vert">Design responsive</span>
+            <span class="tag">Solo</span>
+          </div>
+          <div class="projet-pied">
+            <div class="niveau"><span class="point vert"></span>Terminé</div>
+          </div>
+          <a href="projet-site-web.html" class="btn btn-vide" style="font-size:0.76rem;padding:0.35rem 0.9rem;text-align:center;">Voir le projet →</a>
+        </div>
+
+        <!-- Projet perso commenté, prêt à décommenter
+        <div class="projet" data-cat="perso">
+          <div class="projet-entete">
+            <span class="projet-icone">🐍</span>
+            <span class="projet-semestre">Projet personnel</span>
+          </div>
+          <h3>Générateur d'emploi du temps automatique</h3>
+          <p>Programme Python pour générer automatiquement des emplois du temps à partir de contraintes définies. Backtracking, automatisation de tâches répétitives. Solo.</p>
+          <div class="tags">
+            <span class="tag vert">Python</span>
+            <span class="tag vert">Automatisation</span>
+            <span class="tag">Solo</span>
+          </div>
+          <div class="projet-pied">
+            <div class="niveau"><span class="point vert"></span>Terminé</div>
+          </div>
+          <a href="projet-emploi-du-temps.html" class="btn btn-vide" style="font-size:0.76rem;padding:0.35rem 0.9rem;text-align:center;">Voir le projet →</a>
+        </div>
+        -->
+
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <div class="nom">François Leprieur</div>
+  <p>BUT R&T Cybersécurité · IUT Grand Ouest Normandie — Ifs (14)</p>
+  <ul>
+    <li><a href="index.html">Accueil</a></li>
+    <li><a href="index.html#apropos">Profil</a></li>
+    <li><a href="projets.html">Projets</a></li>
+    <li><a href="index.html#bilan">Projet Professionnel</a></li>
+    <li><a href="https://www.linkedin.com/in/leprieur-fran%C3%A7ois-45450b387/" target="_blank">LinkedIn ↗</a></li>
+  </ul>
+</footer>
+
+<script>
+  const filtres = document.querySelectorAll('.filtre');
+  const projets = document.querySelectorAll('.projet');
+  const count = document.getElementById('count');
+
+  filtres.forEach(btn => {
+    btn.addEventListener('click', () => {
+      filtres.forEach(b => b.classList.remove('actif'));
+      btn.classList.add('actif');
+      const cat = btn.dataset.filtre;
+      let visible = 0;
+      projets.forEach(card => {
+        const hide = cat !== 'tous' && !card.dataset.cat.includes(cat);
+        card.classList.toggle('masque', hide);
+        if (!hide) visible++;
+      });
+      count.textContent = visible;
+    });
+  });
+</script>
+</body>
+</html>

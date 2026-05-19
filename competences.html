@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Compétences – François Leprieur</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .comp-page { padding-top: 5rem; }
+
+    /* ── HEADER ── */
+    .comp-header {
+      background: var(--blanc);
+      border-bottom: 1px solid var(--bordure);
+      padding: 3.5rem 0 2.5rem;
+    }
+    .comp-header h1 { font-size: 2rem; font-weight: 800; margin-bottom: 0.4rem; }
+    .comp-header p { color: var(--gris); font-size: 0.92rem; max-width: 580px; }
+
+    .retour {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.78rem;
+      color: var(--gris);
+      text-decoration: none;
+      margin-bottom: 1.2rem;
+      transition: color 0.15s;
+    }
+    .retour:hover { color: var(--bleu); }
+
+    /* ── GRILLE COMPÉTENCES ── */
+    .comp-section { padding: 3rem 0; }
+    .comp-section + .comp-section { padding-top: 0; }
+
+    .comp-domaine-titre {
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--bleu);
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+    .comp-domaine-titre::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--bordure);
+    }
+
+    .comp-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(440px, 1fr));
+      gap: 1rem;
+      margin-bottom: 3rem;
+    }
+
+    .comp-card {
+      background: var(--blanc);
+      border: 1px solid var(--bordure);
+      border-radius: 12px;
+      padding: 1.4rem 1.5rem;
+      transition: box-shadow 0.2s, border-color 0.2s;
+    }
+    .comp-card:hover { border-color: #bfdbfe; box-shadow: 0 4px 18px rgba(37,99,235,0.06); }
+
+    .comp-card-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-bottom: 0.8rem;
+    }
+    .comp-card-titre {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--texte);
+      line-height: 1.3;
+    }
+    .comp-source {
+      font-size: 0.67rem;
+      font-weight: 600;
+      color: var(--bleu);
+      background: var(--bleu-bg);
+      border: 1px solid #bfdbfe;
+      padding: 0.2rem 0.6rem;
+      border-radius: 100px;
+      white-space: nowrap;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .comp-source.vert { color: var(--vert); background: var(--vert-bg); border-color: #bbf7d0; }
+    .comp-source.orange { color: var(--orange); background: var(--orange-bg); border-color: #fed7aa; }
+
+    .comp-card-desc {
+      font-size: 0.84rem;
+      color: #555;
+      line-height: 1.75;
+      margin-bottom: 1rem;
+    }
+
+    .comp-preuve {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.5rem;
+      font-size: 0.78rem;
+      color: var(--gris);
+      padding-top: 0.8rem;
+      border-top: 1px solid var(--bordure);
+      font-style: italic;
+    }
+    .comp-preuve::before {
+      content: '→';
+      color: var(--bleu);
+      font-style: normal;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+    .comp-preuve a {
+      color: var(--bleu);
+      text-decoration: none;
+      font-weight: 600;
+      font-style: normal;
+    }
+    .comp-preuve a:hover { text-decoration: underline; }
+
+    /* ── SYNTHÈSE BARRE ── */
+    .synthese-bloc {
+      background: var(--blanc);
+      border: 1px solid var(--bordure);
+      border-radius: 12px;
+      padding: 1.5rem 1.6rem;
+      margin-bottom: 3rem;
+    }
+    .synthese-bloc h3 { font-size: 0.88rem; font-weight: 700; margin-bottom: 1.2rem; }
+    .skill-bar-item { margin-bottom: 0.9rem; }
+    .skill-bar-label {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.78rem;
+      margin-bottom: 0.3rem;
+    }
+    .skill-bar-label span:first-child { color: var(--texte); font-weight: 500; }
+    .skill-bar-label span:last-child { color: var(--gris); }
+    .skill-bar-track {
+      height: 5px;
+      background: var(--bordure);
+      border-radius: 100px;
+      overflow: hidden;
+    }
+    .skill-bar-fill {
+      height: 100%;
+      border-radius: 100px;
+      background: var(--bleu);
+      transition: width 0.6s ease;
+    }
+    .skill-bar-fill.vert { background: var(--vert); }
+    .skill-bar-fill.orange { background: var(--orange); }
+
+    @media (max-width: 768px) {
+      .comp-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="logo">François Leprieur</a>
+  <ul>
+    <li><a href="index.html#profil">Profil</a></li>
+    <li><a href="projets.html">Projets</a></li>
+    <li><a href="competences.html" style="color:var(--bleu)">Compétences</a></li>
+    <li><a href="index.html#bilan">Projet pro</a></li>
+  </ul>
+  <a href="https://www.linkedin.com/in/leprieur-fran%C3%A7ois-45450b387/" class="btn-nav" target="_blank">LinkedIn ↗</a>
+</nav>
+
+<div class="comp-page">
+
+  <div class="comp-header">
+    <div class="contenu">
+      <a href="index.html" class="retour">← Retour à l'accueil</a>
+      <p class="label-section">Bilan</p>
+      <h1>Mes Compétences</h1>
+      <p>Compétences techniques développées et validées à travers mes projets de 1ère année de BUT R&T. Chaque compétence est rattachée au projet qui l'a fait émerger.</p>
+    </div>
+  </div>
+
+  <div class="comp-section">
+    <div class="contenu">
+
+      <!-- SYNTHÈSE VISUELLE -->
+      <div class="synthese-bloc">
+        <h3>Vue d'ensemble</h3>
+        <div class="skill-bar-item">
+          <div class="skill-bar-label"><span>Administration réseau (VLAN, routage, adressage IP)</span><span>Compétent</span></div>
+          <div class="skill-bar-track"><div class="skill-bar-fill" style="width:80%"></div></div>
+        </div>
+        <div class="skill-bar-item">
+          <div class="skill-bar-label"><span>Virtualisation (Proxmox, VMs)</span><span>Compétent</span></div>
+          <div class="skill-bar-track"><div class="skill-bar-fill" style="width:70%"></div></div>
+        </div>
+        <div class="skill-bar-item">
+          <div class="skill-bar-label"><span>Python & automatisation</span><span>Compétent</span></div>
+          <div class="skill-bar-track"><div class="skill-bar-fill vert" style="width:75%"></div></div>
+        </div>
+        <div class="skill-bar-item">
+          <div class="skill-bar-label"><span>Développement web (HTML / CSS / Git)</span><span>Compétent</span></div>
+          <div class="skill-bar-track"><div class="skill-bar-fill vert" style="width:72%"></div></div>
+        </div>
+        <div class="skill-bar-item">
+          <div class="skill-bar-label"><span>Mesures & transmissions (fibre optique, cuivre)</span><span>Opérationnel</span></div>
+          <div class="skill-bar-track"><div class="skill-bar-fill orange" style="width:60%"></div></div>
+        </div>
+        <div class="skill-bar-item">
+          <div class="skill-bar-label"><span>APIs REST & traitement de données (JSON)</span><span>Compétent</span></div>
+          <div class="skill-bar-track"><div class="skill-bar-fill vert" style="width:68%"></div></div>
+        </div>
+      </div>
+
+      <!-- RÉSEAUX -->
+      <p class="comp-domaine-titre">🌐 Réseaux &amp; Infrastructure</p>
+      <div class="comp-grid">
+
+        <div class="comp-card">
+          <div class="comp-card-header">
+            <div class="comp-card-titre">Conception d'un plan d'adressage IP</div>
+            <span class="comp-source">Projet S1 · RT1</span>
+          </div>
+          <p class="comp-card-desc">J'ai conçu de zéro un plan d'adressage IP pour une entreprise de 120 utilisateurs, en découpant le réseau en sous-réseaux cohérents par département (Ventes, Commercial…). J'ai choisi les plages d'adresses, les masques et les passerelles pour chaque VLAN.</p>
+          <div class="comp-preuve">Validée lors du <a href="projet-reseau-entreprise.html">Projet Réseau d'entreprise</a> — schéma logique réalisé en groupe de 5.</div>
+        </div>
+
+        <div class="comp-card">
+          <div class="comp-card-header">
+            <div class="comp-card-titre">Configuration de VLANs et routage inter-VLAN</div>
+            <span class="comp-source">Projet S1 · RT1</span>
+          </div>
+          <p class="comp-card-desc">J'ai configuré les ports de switch en mode Access et Trunk, créé les VLANs et mis en place le routage inter-VLAN sur un routeur central. J'ai aussi géré les liens agrégés pour optimiser la bande passante entre les équipements.</p>
+          <div class="comp-preuve">Validée lors du <a href="projet-reseau-entreprise.html">Projet Réseau d'entreprise</a> — configuration fonctionnelle testée et validée.</div>
+        </div>
+
+        <div class="comp-card">
+          <div class="comp-card-header">
+            <div class="comp-card-titre">Déploiement de machines virtuelles sur Proxmox</div>
+            <span class="comp-source">Projet S1 · RT1</span>
+          </div>
+          <p class="comp-card-desc">J'ai déployé et configuré des templates de machines virtuelles sur Proxmox pour simuler les postes de travail de chaque département. Chaque VM était rattachée au bon VLAN et disposait des services réseau nécessaires (Samba, site web interne).</p>
+          <div class="comp-preuve">Validée lors du <a href="projet-reseau-entreprise.html">Projet Réseau d'entreprise</a> — VMs opérationnelles sur l'infrastructure du projet.</div>
+        </div>
+
+        <div class="comp-card">
+          <div class="comp-card-header">
+            <div class="comp-card-titre">Lecture et interprétation de schémas réseau</div>
+            <span class="comp-source">Projet S1 · RT1</span>
+          </div>
+          <p class="comp-card-desc">J'ai produit à la fois un schéma physique (numéros de ports, connexions entre équipements) et un schéma logique (VLANs, adressage, modes de liens). Ces documents ont servi de référence tout au long du projet pour coordonner le groupe.</p>
+          <div class="comp-preuve">Validée lors du <a href="projet-reseau-entreprise.html">Projet Réseau d'entreprise</a> — schémas physique et logique disponibles en galerie.</div>
+        </div>
+
+      </div>
+
+      <!-- TRANSMISSIONS -->
+      <p class="comp-domaine-titre">💡 Transmissions &amp; Mesures</p>
+      <div class="comp-grid">
+
+        <div class="comp-card">
+          <div class="comp-card-header">
+            <div class="comp-card-titre">Mesure de l'atténuation sur fibre optique</div>
+            <span class="comp-source orange">Projet S1 · RT2</span>
+          </div>
+          <p class="comp-card-desc">J'ai utilisé un boîtier de mesure pour calculer l'atténuation de chaque composant d'une infrastructure fibre (bobines, multiplexeurs). J'ai su appliquer les protocoles de manipulation — nettoyage des embouts, respect de la courbure — pour obtenir des mesures fiables.</p>
+          <div class="comp-preuve">Validée lors du <a href="projet-fibre-optique.html">Projet Fibre optique</a> — tableau d'atténuation globale réalisé en groupe de 4.</div>
+        </div>
+
+        <div class="comp-card">
+          <div class="comp-card-header">
+            <div class="comp-card-titre">Caractérisation d'un câble cuivre (longueur, vitesse, SNR)</div>
+            <span class="comp-source orange">Projet S1 · RT2</span>
+          </div>
+          <p class="comp-card-desc">À partir d'un câble de longueur inconnue, j'ai mesuré sa longueur, sa vitesse de propagation et son rapport signal/bruit en respectant les normes constructeur. J'ai su diagnostiquer et corriger les erreurs de mesure liées au non-respect des contraintes.</p>
+          <div class="comp-preuve">Validée lors du <a href="projet-fibre-optique.html">Projet Fibre optique</a> — montages DTF et calculs disponibles en galerie.</div>
+        </div>
+
+      </div>
+
+      <!-- DÉVELOPPEMENT -->
+      <p class="comp-domaine-titre">🐍 Développement &amp; Automatisation</p>
+      <div class="comp-grid">
+
+        <div class="comp-card">
+          <div class="comp-card-header">
+            <div class="comp-card-titre">Requêtes sur une API REST et parsing JSON</div>
+            <span class="comp-source vert">Projet S1 · RT3</span>
+          </div>
+          <p class="comp-card-desc">J'ai développé en Python un programme interrogeant l'API Overpass (OpenStreetMap) via des requêtes structurées en Overpass Query Language. J'ai parsé les réponses JSON et extrait les données utiles (lignes de bus, restaurants…) pour produire des statistiques.</p>
+          <div class="comp-preuve">Validée lors du <a href="projet-openstreetmap.html">Projet OpenStreetMap</a> — programme fonctionnel réalisé en binôme.</div>
+        </div>
+
+        <div class="comp-card">
+          <div class="comp-card-header">
+            <div class="comp-card-titre">Génération automatique de rapports (Markdown → HTML)</div>
+            <span class="comp-source vert">Projet S1 · RT3</span>
+          </div>
+          <p class="comp-card-desc">J'ai créé une fonction Python <code>convert()</code> qui transforme automatiquement des fichiers Markdown de statistiques en pages HTML lisibles. Cette fonction m'a permis d'automatiser la chaîne complète : collecte → traitement → restitution.</p>
+          <div class="comp-preuve">Validée lors du <a href="projet-openstreetmap.html">Projet OpenStreetMap</a> — capture de la fonction disponible en galerie.</div>
+        </div>
+
+        <div class="comp-card">
+          <div class="comp-card-header">
+            <div class="comp-card-titre">Développement web HTML/CSS responsive</div>
+            <span class="comp-source vert">Projet S1 · RT3</span>
+          </div>
+          <p class="comp-card-desc">J'ai conçu et développé de A à Z un site web multipage sur le tennis : structure HTML sémantique, CSS responsive (adaptation mobile/desktop), mise en page soignée. J'ai maquetté le site sur papier avant de l'intégrer, ce qui m'a permis de respecter les délais.</p>
+          <div class="comp-preuve">Validée lors du <a href="projet-site-web.html">Projet Site web</a> — déployé sur <a href="https://francoisleprieur.github.io/Mon-Projet/" target="_blank">GitHub Pages ↗</a>.</div>
+        </div>
+
+        <div class="comp-card">
+          <div class="comp-card-header">
+            <div class="comp-card-titre">Versionnement avec Git &amp; GitHub</div>
+            <span class="comp-source vert">Projet S1 · RT3</span>
+          </div>
+          <p class="comp-card-desc">J'ai utilisé Git tout au long du développement de mon site web pour versionner mon code (commits réguliers, historique clair) et déployer automatiquement via GitHub Pages. J'ai acquis les bonnes pratiques de gestion de code source.</p>
+          <div class="comp-preuve">Validée lors du <a href="projet-site-web.html">Projet Site web</a> — dépôt GitHub disponible.</div>
+        </div>
+
+      </div>
+
+      <!-- TRANSVERSALES -->
+      <p class="comp-domaine-titre">🤝 Compétences transversales</p>
+      <div class="comp-grid">
+
+        <div class="comp-card">
+          <div class="comp-card-header">
+            <div class="comp-card-titre">Gestion de projet &amp; planification (Gantt, Trello)</div>
+            <span class="comp-source">Projets S1</span>
+          </div>
+          <p class="comp-card-desc">J'ai utilisé des diagrammes de Gantt pour planifier et suivre l'avancement du projet réseau d'entreprise, et Trello pour organiser les tâches du projet site web. Ces outils m'ont permis de réagir rapidement lors des phases de mise en commun.</p>
+          <div class="comp-preuve">Validée lors du <a href="projet-reseau-entreprise.html">Projet Réseau</a> et du <a href="projet-site-web.html">Projet Site web</a>.</div>
+        </div>
+
+        <div class="comp-card">
+          <div class="comp-card-header">
+            <div class="comp-card-titre">Travail en équipe et résolution de problèmes</div>
+            <span class="comp-source">Projets S1</span>
+          </div>
+          <p class="comp-card-desc">J'ai travaillé en groupe de 4 et 5 personnes sur des projets techniques complexes. J'ai appris à identifier et corriger des erreurs d'adressage en équipe (projet réseau), à me coordonner pour les mesures (projet fibre) et à collaborer efficacement en binôme.</p>
+          <div class="comp-preuve">Validée sur l'ensemble des projets de S1 — groupes de 2 à 5 personnes.</div>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="nom">François Leprieur</div>
+  <p>BUT R&T Cybersécurité · IUT Grand Ouest Normandie — Ifs (14)</p>
+  <ul>
+    <li><a href="index.html">Accueil</a></li>
+    <li><a href="index.html#profil">Profil</a></li>
+    <li><a href="projets.html">Projets</a></li>
+    <li><a href="competences.html">Compétences</a></li>
+    <li><a href="index.html#bilan">Projet Professionnel</a></li>
+    <li><a href="https://www.linkedin.com/in/leprieur-fran%C3%A7ois-45450b387/" target="_blank">LinkedIn ↗</a></li>
+  </ul>
+</footer>
+
+</body>
+</html>

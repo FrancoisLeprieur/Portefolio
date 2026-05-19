@@ -3,419 +3,250 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mesures sur fibre optique et câble cuivre – Portfolio François Leprieur</title>
+  <title>Mesures fibre optique & câble cuivre – François Leprieur</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
   <style>
-    /* ── PAGE PROJET ── */
     .projet-page { padding-top: 5rem; }
-
-    .projet-hero {
-      background: var(--blanc);
-      border-bottom: 1px solid var(--bordure);
-      padding: 3.5rem 0 2.5rem;
-    }
-    .retour {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.4rem;
-      font-size: 0.78rem;
-      color: var(--gris);
-      text-decoration: none;
-      margin-bottom: 1.5rem;
-      transition: color 0.15s;
-    }
+    .projet-hero { background: var(--blanc); border-bottom: 1px solid var(--bordure); padding: 3.5rem 0 2.5rem; }
+    .retour { display: inline-flex; align-items: center; gap: 0.4rem; font-size: 0.78rem; color: var(--gris); text-decoration: none; margin-bottom: 1.2rem; transition: color 0.15s; }
     .retour:hover { color: var(--bleu); }
-
-    .projet-hero h1 {
-      font-size: 2rem;
-      font-weight: 800;
-      line-height: 1.15;
-      margin-bottom: 0.5rem;
-    }
-    .projet-meta {
-      display: flex;
-      gap: 0.5rem;
-      flex-wrap: wrap;
-      margin-bottom: 1rem;
-      align-items: center;
-    }
-    .badge-semestre {
-      font-size: 0.72rem;
-      font-weight: 600;
-      color: var(--bleu);
-      background: var(--bleu-bg);
-      padding: 0.25rem 0.7rem;
-      border-radius: 100px;
-    }
-    .badge-niveau {
-      display: flex;
-      align-items: center;
-      gap: 0.3rem;
-      font-size: 0.72rem;
-      color: var(--gris);
-    }
-
-    .section-projet {
-      padding: 2.5rem 0;
-      border-bottom: 1px solid var(--bordure);
-    }
+    .projet-hero h1 { font-size: 2rem; font-weight: 800; line-height: 1.15; margin-bottom: 0.5rem; }
+    .projet-meta { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1rem; align-items: center; }
+    .badge-semestre { font-size: 0.72rem; font-weight: 600; color: var(--orange); background: var(--orange-bg); padding: 0.25rem 0.7rem; border-radius: 100px; border: 1px solid #fed7aa; }
+    .section-projet { padding: 2.5rem 0; border-bottom: 1px solid var(--bordure); }
     .section-projet:last-child { border-bottom: none; }
+    .section-titre { font-size: 0.65rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--bleu); margin-bottom: 1rem; }
+    .resume-texte { font-size: 0.93rem; color: #444; line-height: 1.85; max-width: 720px; }
+    .infos-projet { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 0.8rem; margin-bottom: 2rem; }
+    .deux-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+    .bloc-texte { background: var(--blanc); border: 1px solid var(--bordure); border-radius: 12px; padding: 1.3rem 1.4rem; }
+    .bloc-texte h3 { font-size: 0.84rem; font-weight: 700; margin-bottom: 0.6rem; }
+    .bloc-texte p { font-size: 0.84rem; color: #555; line-height: 1.75; }
 
-    .section-titre {
-      font-size: 0.65rem;
-      font-weight: 700;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--bleu);
-      margin-bottom: 0.9rem;
-    }
+    .galerie-arg { display: flex; flex-direction: column; gap: 2rem; }
+    .galerie-item { background: var(--blanc); border: 1px solid var(--bordure); border-radius: 12px; overflow: hidden; transition: box-shadow 0.2s; }
+    .galerie-item:hover { box-shadow: 0 6px 24px rgba(37,99,235,0.09); }
+    .galerie-item-header { padding: 1rem 1.3rem 0.8rem; border-bottom: 1px solid var(--bordure); background: var(--fond); }
+    .galerie-item-num { font-size: 0.62rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--orange); margin-bottom: 0.2rem; }
+    .galerie-item-titre { font-size: 0.92rem; font-weight: 700; color: var(--texte); }
+    .galerie-item-body { display: grid; grid-template-columns: 1fr 1fr; }
+    .galerie-item-img { border-right: 1px solid var(--bordure); cursor: zoom-in; overflow: hidden; }
+    .galerie-item-img img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.2s; min-height: 200px; }
+    .galerie-item-img:hover img { transform: scale(1.03); }
+    .galerie-item-desc { padding: 1.2rem 1.3rem; font-size: 0.83rem; color: #555; line-height: 1.8; }
+    .galerie-item-desc strong { color: var(--texte); }
 
-    .resume-texte {
-      font-size: 0.95rem;
-      color: #444;
-      line-height: 1.8;
-      max-width: 720px;
-    }
+    .fichier-item { display: flex; align-items: center; gap: 0.8rem; background: var(--blanc); border: 1px solid var(--bordure); border-radius: 8px; padding: 0.8rem 1rem; text-decoration: none; color: var(--texte); transition: border-color 0.15s; font-size: 0.85rem; font-weight: 600; }
+    .fichier-item:hover { border-color: #fed7aa; color: var(--orange); }
 
-    .infos-projet {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-      gap: 0.8rem;
-      margin-bottom: 2rem;
-    }
-
-    .comp-list { display: flex; flex-direction: column; gap: 0.5rem; }
-    .comp-item {
-      display: flex;
-      gap: 0.7rem;
-      align-items: flex-start;
-      background: var(--fond);
-      border: 1px solid var(--bordure);
-      border-radius: 8px;
-      padding: 0.65rem 0.9rem;
-      font-size: 0.84rem;
-      color: #444;
-    }
-    .comp-item .code {
-      background: var(--bleu-bg);
-      color: var(--bleu);
-      font-size: 0.63rem;
-      font-weight: 700;
-      padding: 0.15rem 0.45rem;
-      border-radius: 4px;
-      flex-shrink: 0;
-      margin-top: 2px;
-    }
-
-    .deux-cols {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1.5rem;
-    }
-    .bloc-texte {
-      background: var(--blanc);
-      border: 1px solid var(--bordure);
-      border-radius: 12px;
-      padding: 1.3rem 1.4rem;
-    }
-    .bloc-texte h3 { font-size: 0.82rem; font-weight: 700; margin-bottom: 0.7rem; color: var(--texte); }
-    .bloc-texte p { font-size: 0.85rem; color: #555; line-height: 1.75; }
-
-    /* GALERIE */
-    .galerie {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-      gap: 1rem;
-    }
-    .galerie-item-wrap {
-      border-radius: 10px;
-      overflow: hidden;
-      border: 1px solid var(--bordure);
-      background: var(--fond);
-      cursor: zoom-in;
-      transition: box-shadow 0.2s, transform 0.2s;
-    }
-    .galerie-item-wrap:hover {
-      box-shadow: 0 6px 24px rgba(37,99,235,0.12);
-      transform: translateY(-2px);
-    }
-    .galerie-item-wrap img {
-      width: 100%;
-      aspect-ratio: 16/10;
-      object-fit: cover;
-      display: block;
-    }
-    .legende {
-      font-size: 0.72rem;
-      color: var(--gris);
-      padding: 0.45rem 0.8rem;
-      background: var(--blanc);
-      border-top: 1px solid var(--bordure);
-      text-align: center;
-    }
-
-    /* LIGHTBOX */
-    .lightbox {
-      display: none;
-      position: fixed;
-      inset: 0;
-      background: rgba(0,0,0,0.88);
-      z-index: 1000;
-      align-items: center;
-      justify-content: center;
-      cursor: zoom-out;
-      padding: 2rem;
-    }
+    .lightbox { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.88); z-index: 1000; align-items: center; justify-content: center; cursor: zoom-out; padding: 2rem; }
     .lightbox.open { display: flex; }
-    .lightbox img {
-      max-width: 90vw;
-      max-height: 85vh;
-      object-fit: contain;
-      border-radius: 8px;
-      box-shadow: 0 20px 60px rgba(0,0,0,0.5);
-    }
-    .lightbox-legende {
-      position: fixed;
-      bottom: 1.5rem;
-      left: 50%;
-      transform: translateX(-50%);
-      color: rgba(255,255,255,0.7);
-      font-size: 0.8rem;
-      text-align: center;
-      max-width: 600px;
-    }
-    .lightbox-close {
-      position: fixed;
-      top: 1.2rem;
-      right: 1.5rem;
-      color: white;
-      font-size: 1.8rem;
-      cursor: pointer;
-      line-height: 1;
-      opacity: 0.7;
-      transition: opacity 0.15s;
-    }
+    .lightbox img { max-width: 90vw; max-height: 85vh; object-fit: contain; border-radius: 8px; }
+    .lightbox-close { position: fixed; top: 1.2rem; right: 1.5rem; color: white; font-size: 1.8rem; cursor: pointer; opacity: 0.7; line-height: 1; }
     .lightbox-close:hover { opacity: 1; }
 
-    /* FICHIERS */
-    .fichiers-list { display: flex; flex-direction: column; gap: 0.6rem; }
-    .fichier-item {
-      display: flex;
-      align-items: center;
-      gap: 0.8rem;
-      background: var(--blanc);
-      border: 1px solid var(--bordure);
-      border-radius: 8px;
-      padding: 0.8rem 1rem;
-      text-decoration: none;
-      color: var(--texte);
-      transition: border-color 0.15s;
-    }
-    .fichier-item:hover { border-color: #bfdbfe; }
-    .fichier-item .fichier-icone { font-size: 1.3rem; }
-    .fichier-nom { font-size: 0.85rem; font-weight: 700; }
-    .fichier-desc { font-size: 0.72rem; color: var(--gris); }
-    .fichier-dl { margin-left: auto; font-size: 0.75rem; color: var(--bleu); font-weight: 600; }
-
     @media (max-width: 768px) {
-      .deux-cols { grid-template-columns: 1fr; }
+      .deux-cols, .galerie-item-body { grid-template-columns: 1fr; }
+      .galerie-item-img { border-right: none; border-bottom: 1px solid var(--bordure); }
     }
-</style>
+  </style>
 </head>
 <body>
 
 <nav>
   <a href="index.html" class="logo">François Leprieur</a>
   <ul>
-    <li><a href="index.html#apropos">Profil</a></li>
-    <li><a href="index.html#projets">Projets</a></li>
-    <li><a href="index.html#competences">Compétences</a></li>
-    <li><a href="index.html#bilan">Bilan</a></li>
+    <li><a href="index.html#profil">Profil</a></li>
+    <li><a href="projets.html">Projets</a></li>
+    <li><a href="competences.html">Compétences</a></li>
+    <li><a href="index.html#bilan">Projet pro</a></li>
   </ul>
   <a href="https://www.linkedin.com/in/leprieur-fran%C3%A7ois-45450b387/" class="btn-nav" target="_blank">LinkedIn ↗</a>
 </nav>
 
 <div class="projet-page">
 
-  <!-- HERO -->
   <div class="projet-hero">
     <div class="contenu">
-      <a href="index.html#projets" class="retour">← Retour aux projets</a>
+      <a href="projets.html" class="retour">← Retour aux projets</a>
       <div class="projet-meta">
-        <span style="font-size:1.6rem">💡</span>
-        <span class="badge-semestre">Projet — S1</span>
-        <span class="badge-niveau">
-          <span class="point vert"></span>
-          Terminé
-        </span>
+        <span style="font-size:1.5rem">💡</span>
+        <span class="badge-semestre">Projet S1 · RT2</span>
       </div>
       <h1>Mesures sur fibre optique et câble cuivre</h1>
       <div class="tags" style="margin-top:0.7rem">
         <span class="tag orange">Fibre optique</span>
-            <span class="tag orange">Câble cuivre</span>
-            <span class="tag orange">Atténuation / SNR</span>
-            <span class="tag orange">OTDR</span>
-            <span class="tag">Groupe de 4</span>
-            
+        <span class="tag orange">Câble cuivre</span>
+        <span class="tag orange">Atténuation / SNR</span>
+        <span class="tag orange">OTDR</span>
+        <span class="tag">Groupe de 4</span>
       </div>
     </div>
   </div>
 
-  <!-- PRÉSENTATION -->
   <section class="section-projet">
     <div class="contenu">
-      <p class="section-titre">Présentation</p>
+      <p class="section-titre">Présentation du projet</p>
       <div class="infos-projet">
-        <div class="info-ligne">
-          <div class="label">Catégorie</div>
-          <div class="valeur">RT2 — Transmissions</div>
-        </div>
-        <div class="info-ligne">
-          <div class="label">Période</div>
-          <div class="valeur">Semestres 1 </div>
-        </div>
-        <div class="info-ligne">
-          <div class="label">Format</div>
-          <div class="valeur">Groupe de 4</div>
-        </div>
-        <div class="info-ligne">
-          <div class="label">Rôle</div>
-          <div class="valeur">Mesures &amp; analyse</div>
-        </div>
+        <div class="info-ligne"><div class="label">Catégorie</div><div class="valeur">RT2 — Transmissions</div></div>
+        <div class="info-ligne"><div class="label">Période</div><div class="valeur">Semestre 1</div></div>
+        <div class="info-ligne"><div class="label">Format</div><div class="valeur">Groupe de 4</div></div>
+        <div class="info-ligne"><div class="label">Rôle</div><div class="valeur">Mesures &amp; analyse</div></div>
       </div>
-      <p class="section-titre">Résumé</p>
-      <p class="resume-texte">Étude et mesure des caractéristiques de liaisons filaires : atténuation, SNR, pertes par réflexion, longueur de câble. Utilisation d'appareils de mesure professionnels pour qualifier et mettre en place une infrastructure fibre optique.</p>
+      <p class="resume-texte">Étude et mesure des caractéristiques de liaisons filaires sur une infrastructure fibre optique réelle (boîtier, bobines, multiplexeurs) et un câble cuivre de longueur inconnue. Utilisation d'appareils de mesure professionnels pour qualifier les liaisons : atténuation, SNR, vitesse de propagation et analyse DTF.</p>
     </div>
   </section>
 
-  <!-- CONTEXTE & MÉTHODE -->
   <section class="section-projet" style="background:var(--blanc)">
     <div class="contenu">
-      <p class="section-titre">Contexte &amp; Méthode</p>
+      <p class="section-titre">Contexte &amp; Démarche</p>
       <div class="deux-cols">
         <div class="bloc-texte">
           <h3>📋 Contexte</h3>
-          <p>Donc pendant ce projet, nous avons à notre disposition un boîtier fibre, avec des bobines et des multiplexeurs (1→2 ou 1→4). Sur ce câble, nous devions calculer l’atténuation de chaque composant (bobines, etc.) afin d’établir un tableau avec l’atténuation globale. Ensuite, nous avions également à notre disposition un câble en cuivre dont nous devions mesurer la longueur, car elle était inconnue, mais aussi sa vitesse de propagation et plusieurs autres paramètres.</p>
+          <p>Nous avions à disposition un boîtier fibre avec bobines et multiplexeurs (1→2, 1→4). L'objectif était de calculer l'atténuation de chaque composant et d'établir un tableau global, puis de caractériser un câble cuivre de longueur inconnue.</p>
         </div>
         <div class="bloc-texte">
-          <h3>🔧 Méthode </h3>
-          <p>Donc, bien sûr, nous devions suivre un protocole très précis afin d’obtenir des mesures cohérentes. Par exemple, pour la fibre, nous devions nettoyer soigneusement les embouts à chaque utilisation afin d’éviter une atténuation importante qui fausserait les résultats, mais aussi éviter de plier le câble dans tous les sens, car le signal serait mal réfléchi dans la fibre. De plus, pour le câble en cuivre, nous devions respecter les normes du constructeur, sinon cela entraînait des erreurs de calcul.</p>
+          <h3>🔧 Protocole de mesure</h3>
+          <p>Pour la fibre : nettoyage systématique des embouts, respect de la courbure minimale. Pour le cuivre : respect des normes constructeur pour les calculs. Ces précautions étaient indispensables pour obtenir des résultats cohérents et exploitables.</p>
         </div>
       </div>
     </div>
   </section>
 
+  <section class="section-projet">
+    <div class="contenu">
+      <p class="section-titre">Documents produits &amp; ce qu'ils prouvent</p>
+      <div class="galerie-arg">
 
-  <!-- BILAN -->
+        <div class="galerie-item">
+          <div class="galerie-item-header">
+            <div class="galerie-item-num">Document 1 / 5</div>
+            <div class="galerie-item-titre">Montage pour mesurer la longueur du câble cuivre</div>
+          </div>
+          <div class="galerie-item-body">
+            <div class="galerie-item-img" data-src="Montage_pour_savoir_la_longueur_du_cable.png">
+              <img src="Montage_pour_savoir_la_longueur_du_cable.png" alt="Montage mesure longueur câble">
+            </div>
+            <div class="galerie-item-desc">
+              <p>J'ai réalisé ce montage pour mesurer la <strong>longueur d'un câble cuivre de longueur inconnue</strong> en utilisant la réflectométrie dans le domaine temporel (TDR). Le câble est connecté à l'appareil de mesure, dont on connaît la vitesse de propagation du signal.</p>
+              <p style="margin-top:0.8rem">Ce montage prouve ma capacité à <strong>mettre en œuvre un protocole de mesure rigoureux</strong> avec du matériel professionnel, en respectant les normes constructeur pour obtenir des résultats exploitables.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="galerie-item">
+          <div class="galerie-item-header">
+            <div class="galerie-item-num">Document 2 / 5</div>
+            <div class="galerie-item-titre">Montage pour l'analyse DTF (Distance To Fault)</div>
+          </div>
+          <div class="galerie-item-body">
+            <div class="galerie-item-img" data-src="Pour_savoir_le_DTF.png">
+              <img src="Pour_savoir_le_DTF.png" alt="Montage DTF">
+            </div>
+            <div class="galerie-item-desc">
+              <p>Ce montage DTF (Distance To Fault) nous a permis de <strong>localiser d'éventuels défauts ou anomalies</strong> sur le câble cuivre en mesurant le temps de retour d'un signal réfléchi. L'analyse des pics sur le graphe permet d'identifier la position exacte d'une discontinuité.</p>
+              <p style="margin-top:0.8rem">Cette technique est directement utilisée en entreprise pour <strong>diagnostiquer des pannes réseau</strong> sans avoir à démonter l'infrastructure physique.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="galerie-item">
+          <div class="galerie-item-header">
+            <div class="galerie-item-num">Document 3 / 5</div>
+            <div class="galerie-item-titre">Montage pour mesurer l'atténuation de la fibre optique</div>
+          </div>
+          <div class="galerie-item-body">
+            <div class="galerie-item-img" data-src="Montage_pour_voir_l'attenuation.png">
+              <img src="Montage_pour_voir_l'attenuation.png" alt="Montage atténuation fibre">
+            </div>
+            <div class="galerie-item-desc">
+              <p>J'ai réalisé ce montage pour mesurer <strong>l'atténuation globale de l'infrastructure fibre</strong> (bobines + multiplexeurs). La source lumineuse envoie un signal, le puissance-mètre mesure ce qui arrive à l'autre bout — la différence est l'atténuation.</p>
+              <p style="margin-top:0.8rem">Le respect du protocole (nettoyage des embouts, courbure maîtrisée) était <strong>indispensable</strong> pour éviter des pertes parasites qui auraient faussé les mesures.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="galerie-item">
+          <div class="galerie-item-header">
+            <div class="galerie-item-num">Document 4 / 5</div>
+            <div class="galerie-item-titre">Tableau des atténuations par composant</div>
+          </div>
+          <div class="galerie-item-body">
+            <div class="galerie-item-img" data-src="Tableau_de_l'attenuation.png">
+              <img src="Tableau_de_l'attenuation.png" alt="Tableau atténuations">
+            </div>
+            <div class="galerie-item-desc">
+              <p>Ce tableau synthétise <strong>l'atténuation mesurée pour chaque composant</strong> de l'infrastructure fibre : bobines de différentes longueurs et multiplexeurs 1→2 et 1→4. Il permet de calculer l'atténuation globale d'un chemin optique quelconque.</p>
+              <p style="margin-top:0.8rem">Ce document prouve ma capacité à <strong>analyser et synthétiser des données de mesure</strong> de manière structurée, exploitable pour dimensionner ou diagnostiquer une infrastructure fibre réelle.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="galerie-item">
+          <div class="galerie-item-header">
+            <div class="galerie-item-num">Document 5 / 5</div>
+            <div class="galerie-item-titre">Calcul de la longueur du câble cuivre</div>
+          </div>
+          <div class="galerie-item-body">
+            <div class="galerie-item-img" data-src="Calcule_pour_savoir_la_longeur_du_cable.png">
+              <img src="Calcule_pour_savoir_la_longeur_du_cable.png" alt="Calcul longueur câble">
+            </div>
+            <div class="galerie-item-desc">
+              <p>À partir des mesures TDR, j'ai appliqué la formule <strong>longueur = (temps × vitesse) / 2</strong> pour déterminer la longueur précise du câble. Le facteur 2 tient compte de l'aller-retour du signal réfléchi.</p>
+              <p style="margin-top:0.8rem">Ce calcul démontre ma compréhension des <strong>principes physiques des transmissions</strong> et ma capacité à passer des mesures brutes à une valeur exploitable — compétence directement applicable en environnement professionnel.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
   <section class="section-projet" style="background:var(--blanc)">
     <div class="contenu">
-      <p class="section-titre">Résultats &amp; Bilan</p>
+      <p class="section-titre">Bilan</p>
       <div class="deux-cols">
         <div class="bloc-texte">
           <h3 style="color:var(--vert)">✅ Points forts</h3>
-          <p>Nous avons été assez efficaces pendant ce projet, car nous avons trouvé des résultats cohérents tout au long du projet, ce qui nous a permis d’obtenir une bonne note. Je peux également souligner le travail d’équipe, qui a été excellent durant ce projet : chacun avait sa tâche, et il y avait un véritable esprit de collaboration et d’entraide.</p>
+          <p>Résultats cohérents tout au long du projet. Très bon esprit d'équipe — chaque membre avait sa tâche clairement définie. Bonne note obtenue grâce à la rigueur dans les mesures.</p>
         </div>
         <div class="bloc-texte">
           <h3 style="color:var(--orange)">⚠️ À améliorer</h3>
-          <p>En fin de projet, la rédaction du compte rendu collectif a été un peu laborieuse : tout le monde attendait pour saisir les données au même moment. Une meilleure organisation aurait été de demander à chaque membre de rédiger sa partie individuellement, puis de les compiler dans le document final.</p>
+          <p>La rédaction du compte rendu collectif a été un peu laborieuse : tout le monde attendait pour saisir les données au même moment. Une organisation en sections individuelles aurait été plus efficace.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- GALERIE -->
-  <!--
-    POUR AJOUTER DES PHOTOS :
-    1. Mets tes images dans le dossier portfolio/
-    2. Remplace les exemples ci-dessous par :
-       <div class="galerie-item-wrap" data-src="ma-photo.png" data-legende="Ma légende">
-         <img src="ma-photo.png" alt="description">
-         <div class="legende">Ma légende</div>
-       </div>
-  -->
-  <section class="section-projet">
-    <div class="contenu">
-      <p class="section-titre">Galerie photos &amp; captures</p>
-      <div class="galerie">
-        <div class="galerie-item-wrap" data-src="Montage_pour_savoir_la_longueur_du_cable.png" data-legende="Ma légende">
-         <img src="Montage_pour_savoir_la_longueur_du_cable.png" alt="description">
-         <div class="legende">Donc voici un montage pour savoir le longueur du cable</div>
-       </div>
-       <div class="galerie-item-wrap" data-src="Pour_savoir_le_DTF.png" data-legende="Ma légende">
-         <img src="Pour_savoir_le_DTF.png" alt="description">
-         <div class="legende">Donc voici un montage pour savoir le DTF
-         </div>
-       </div>
-       <div class="galerie-item-wrap" data-src="Montage_pour_voir_l'attenuation.png" data-legende="Ma légende">
-         <img src="Montage_pour_voir_l'attenuation.png" alt="description">
-         <div class="legende">Donc voici un montage pour voir l'attenuation globale</div>
-       </div>
-       <div class="galerie-item-wrap" data-src="Tableau_de_l'attenuation.png" data-legende="Ma légende">
-         <img src="Tableau_de_l'attenuation.png" alt="description">
-         <div class="legende">Donc voici le tableau des atténuations</div>
-       </div>
-       <div class="galerie-item-wrap" data-src="Calcule_pour_savoir_la_longeur_du_cable.png" data-legende="Ma légende">
-         <img src="Calcule_pour_savoir_la_longeur_du_cable.png" alt="description">
-         <div class="legende">Donc voici le calcul pour savoir la longueur du cable</div>
-       </div>
-    </div>
-  </section>
+</div>
 
-
-  <!--
-    POUR AJOUTER UN FICHIER :
-    1. Mets le fichier (.zip, .py, .pdf…) dans le dossier portfolio/
-    2. Ajoute un bloc <a href="monfichier.zip" download class="fichier-item"> ci-dessous
-  -->
-  <!-- <section class="section-projet" style="background:var(--blanc)">
-    <div class="contenu">
-      <p class="section-titre">Fichiers du projet</p>
-      <div class="fichiers-list">
-<p style="font-size:0.83rem;color:var(--gris)">Ajoutez vos fichiers ici en modifiant le HTML.</p>      </div>
-    </div>
-  </section>
-
-</div> -->
-
-<!-- LIGHTBOX -->
 <div class="lightbox" id="lightbox">
   <span class="lightbox-close" onclick="document.getElementById('lightbox').classList.remove('open')">✕</span>
-  <img id="lb-img" src="" alt="Photo agrandie">
-  <div class="lightbox-legende" id="lb-legende"></div>
+  <img id="lb-img" src="" alt="Agrandir">
 </div>
 
 <footer>
   <div class="nom">François Leprieur</div>
   <p>BUT R&T Cybersécurité · IUT Grand Ouest Normandie — Ifs (14)</p>
   <ul>
-    <li><a href="index.html#accueil">Accueil</a></li>
-    <li><a href="index.html#projets">Projets</a></li>
-    <li><a href="index.html#competences">Compétences</a></li>
-    <li><a href="index.html#bilan">Bilan</a></li>
+    <li><a href="index.html">Accueil</a></li>
+    <li><a href="projets.html">Projets</a></li>
+    <li><a href="competences.html">Compétences</a></li>
     <li><a href="https://www.linkedin.com/in/leprieur-fran%C3%A7ois-45450b387/" target="_blank">LinkedIn ↗</a></li>
   </ul>
 </footer>
 
 <script>
-
-  // LIGHTBOX
-  document.querySelectorAll('.galerie-item-wrap[data-src]').forEach(wrap => {
-    wrap.addEventListener('click', () => {
-      const lb = document.getElementById('lightbox');
-      document.getElementById('lb-img').src = wrap.dataset.src;
-      document.getElementById('lb-legende').textContent = wrap.dataset.legende || '';
-      lb.classList.add('open');
+  document.querySelectorAll('.galerie-item-img[data-src]').forEach(el => {
+    el.addEventListener('click', () => {
+      document.getElementById('lb-img').src = el.dataset.src;
+      document.getElementById('lightbox').classList.add('open');
     });
   });
-  document.getElementById('lightbox').addEventListener('click', () => {
-    document.getElementById('lightbox').classList.remove('open');
-  });
-  document.addEventListener('keydown', e => {
-    if (e.key === 'Escape') document.getElementById('lightbox').classList.remove('open');
-  });
-
+  document.getElementById('lightbox').addEventListener('click', () => document.getElementById('lightbox').classList.remove('open'));
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') document.getElementById('lightbox').classList.remove('open'); });
 </script>
 </body>
 </html>

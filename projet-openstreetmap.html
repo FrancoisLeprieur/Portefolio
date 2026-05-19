@@ -3,415 +3,258 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Statistiques géographiques via API OpenStreetMap – Portfolio François Leprieur</title>
+  <title>Statistiques géographiques API OpenStreetMap – François Leprieur</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
   <style>
-    /* ── PAGE PROJET ── */
     .projet-page { padding-top: 5rem; }
-
-    .projet-hero {
-      background: var(--blanc);
-      border-bottom: 1px solid var(--bordure);
-      padding: 3.5rem 0 2.5rem;
-    }
-    .retour {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.4rem;
-      font-size: 0.78rem;
-      color: var(--gris);
-      text-decoration: none;
-      margin-bottom: 1.5rem;
-      transition: color 0.15s;
-    }
+    .projet-hero { background: var(--blanc); border-bottom: 1px solid var(--bordure); padding: 3.5rem 0 2.5rem; }
+    .retour { display: inline-flex; align-items: center; gap: 0.4rem; font-size: 0.78rem; color: var(--gris); text-decoration: none; margin-bottom: 1.2rem; transition: color 0.15s; }
     .retour:hover { color: var(--bleu); }
-
-    .projet-hero h1 {
-      font-size: 2rem;
-      font-weight: 800;
-      line-height: 1.15;
-      margin-bottom: 0.5rem;
-    }
-    .projet-meta {
-      display: flex;
-      gap: 0.5rem;
-      flex-wrap: wrap;
-      margin-bottom: 1rem;
-      align-items: center;
-    }
-    .badge-semestre {
-      font-size: 0.72rem;
-      font-weight: 600;
-      color: var(--bleu);
-      background: var(--bleu-bg);
-      padding: 0.25rem 0.7rem;
-      border-radius: 100px;
-    }
-    .badge-niveau {
-      display: flex;
-      align-items: center;
-      gap: 0.3rem;
-      font-size: 0.72rem;
-      color: var(--gris);
-    }
-
-    .section-projet {
-      padding: 2.5rem 0;
-      border-bottom: 1px solid var(--bordure);
-    }
+    .projet-hero h1 { font-size: 2rem; font-weight: 800; line-height: 1.15; margin-bottom: 0.5rem; }
+    .projet-meta { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1rem; align-items: center; }
+    .badge-semestre { font-size: 0.72rem; font-weight: 600; color: var(--vert); background: var(--vert-bg); padding: 0.25rem 0.7rem; border-radius: 100px; border: 1px solid #bbf7d0; }
+    .section-projet { padding: 2.5rem 0; border-bottom: 1px solid var(--bordure); }
     .section-projet:last-child { border-bottom: none; }
+    .section-titre { font-size: 0.65rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--bleu); margin-bottom: 1rem; }
+    .resume-texte { font-size: 0.93rem; color: #444; line-height: 1.85; max-width: 720px; }
+    .infos-projet { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 0.8rem; margin-bottom: 2rem; }
+    .deux-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+    .bloc-texte { background: var(--blanc); border: 1px solid var(--bordure); border-radius: 12px; padding: 1.3rem 1.4rem; }
+    .bloc-texte h3 { font-size: 0.84rem; font-weight: 700; margin-bottom: 0.6rem; }
+    .bloc-texte p { font-size: 0.84rem; color: #555; line-height: 1.75; }
+    code { background: var(--fond); border: 1px solid var(--bordure); padding: 0.1rem 0.4rem; border-radius: 4px; font-size: 0.82rem; font-family: monospace; color: var(--bleu); }
 
-    .section-titre {
-      font-size: 0.65rem;
-      font-weight: 700;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--bleu);
-      margin-bottom: 0.9rem;
-    }
+    .galerie-arg { display: flex; flex-direction: column; gap: 2rem; }
+    .galerie-item { background: var(--blanc); border: 1px solid var(--bordure); border-radius: 12px; overflow: hidden; transition: box-shadow 0.2s; }
+    .galerie-item:hover { box-shadow: 0 6px 24px rgba(37,99,235,0.09); }
+    .galerie-item-header { padding: 1rem 1.3rem 0.8rem; border-bottom: 1px solid var(--bordure); background: var(--fond); }
+    .galerie-item-num { font-size: 0.62rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--vert); margin-bottom: 0.2rem; }
+    .galerie-item-titre { font-size: 0.92rem; font-weight: 700; color: var(--texte); }
+    .galerie-item-body { display: grid; grid-template-columns: 1fr 1fr; }
+    .galerie-item-img { border-right: 1px solid var(--bordure); cursor: zoom-in; overflow: hidden; }
+    .galerie-item-img img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.2s; min-height: 200px; }
+    .galerie-item-img:hover img { transform: scale(1.03); }
+    .galerie-item-desc { padding: 1.2rem 1.3rem; font-size: 0.83rem; color: #555; line-height: 1.8; }
+    .galerie-item-desc strong { color: var(--texte); }
 
-    .resume-texte {
-      font-size: 0.95rem;
-      color: #444;
-      line-height: 1.8;
-      max-width: 720px;
-    }
+    .fichier-item { display: flex; align-items: center; gap: 0.8rem; background: var(--blanc); border: 1px solid var(--bordure); border-radius: 8px; padding: 0.8rem 1rem; text-decoration: none; color: var(--texte); transition: border-color 0.15s; font-size: 0.85rem; font-weight: 600; }
+    .fichier-item:hover { border-color: #bbf7d0; color: var(--vert); }
 
-    .infos-projet {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-      gap: 0.8rem;
-      margin-bottom: 2rem;
-    }
-
-    .comp-list { display: flex; flex-direction: column; gap: 0.5rem; }
-    .comp-item {
-      display: flex;
-      gap: 0.7rem;
-      align-items: flex-start;
-      background: var(--fond);
-      border: 1px solid var(--bordure);
-      border-radius: 8px;
-      padding: 0.65rem 0.9rem;
-      font-size: 0.84rem;
-      color: #444;
-    }
-    .comp-item .code {
-      background: var(--bleu-bg);
-      color: var(--bleu);
-      font-size: 0.63rem;
-      font-weight: 700;
-      padding: 0.15rem 0.45rem;
-      border-radius: 4px;
-      flex-shrink: 0;
-      margin-top: 2px;
-    }
-
-    .deux-cols {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1.5rem;
-    }
-    .bloc-texte {
-      background: var(--blanc);
-      border: 1px solid var(--bordure);
-      border-radius: 12px;
-      padding: 1.3rem 1.4rem;
-    }
-    .bloc-texte h3 { font-size: 0.82rem; font-weight: 700; margin-bottom: 0.7rem; color: var(--texte); }
-    .bloc-texte p { font-size: 0.85rem; color: #555; line-height: 1.75; }
-
-    /* GALERIE */
-    .galerie {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-      gap: 1rem;
-    }
-    .galerie-item-wrap {
-      border-radius: 10px;
-      overflow: hidden;
-      border: 1px solid var(--bordure);
-      background: var(--fond);
-      cursor: zoom-in;
-      transition: box-shadow 0.2s, transform 0.2s;
-    }
-    .galerie-item-wrap:hover {
-      box-shadow: 0 6px 24px rgba(37,99,235,0.12);
-      transform: translateY(-2px);
-    }
-    .galerie-item-wrap img {
-      width: 100%;
-      aspect-ratio: 16/10;
-      object-fit: cover;
-      display: block;
-    }
-    .legende {
-      font-size: 0.72rem;
-      color: var(--gris);
-      padding: 0.45rem 0.8rem;
-      background: var(--blanc);
-      border-top: 1px solid var(--bordure);
-      text-align: center;
-    }
-
-    /* LIGHTBOX */
-    .lightbox {
-      display: none;
-      position: fixed;
-      inset: 0;
-      background: rgba(0,0,0,0.88);
-      z-index: 1000;
-      align-items: center;
-      justify-content: center;
-      cursor: zoom-out;
-      padding: 2rem;
-    }
+    .lightbox { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.88); z-index: 1000; align-items: center; justify-content: center; cursor: zoom-out; padding: 2rem; }
     .lightbox.open { display: flex; }
-    .lightbox img {
-      max-width: 90vw;
-      max-height: 85vh;
-      object-fit: contain;
-      border-radius: 8px;
-      box-shadow: 0 20px 60px rgba(0,0,0,0.5);
-    }
-    .lightbox-legende {
-      position: fixed;
-      bottom: 1.5rem;
-      left: 50%;
-      transform: translateX(-50%);
-      color: rgba(255,255,255,0.7);
-      font-size: 0.8rem;
-      text-align: center;
-      max-width: 600px;
-    }
-    .lightbox-close {
-      position: fixed;
-      top: 1.2rem;
-      right: 1.5rem;
-      color: white;
-      font-size: 1.8rem;
-      cursor: pointer;
-      line-height: 1;
-      opacity: 0.7;
-      transition: opacity 0.15s;
-    }
+    .lightbox img { max-width: 90vw; max-height: 85vh; object-fit: contain; border-radius: 8px; }
+    .lightbox-close { position: fixed; top: 1.2rem; right: 1.5rem; color: white; font-size: 1.8rem; cursor: pointer; opacity: 0.7; line-height: 1; }
     .lightbox-close:hover { opacity: 1; }
 
-    /* FICHIERS */
-    .fichiers-list { display: flex; flex-direction: column; gap: 0.6rem; }
-    .fichier-item {
-      display: flex;
-      align-items: center;
-      gap: 0.8rem;
-      background: var(--blanc);
-      border: 1px solid var(--bordure);
-      border-radius: 8px;
-      padding: 0.8rem 1rem;
-      text-decoration: none;
-      color: var(--texte);
-      transition: border-color 0.15s;
-    }
-    .fichier-item:hover { border-color: #bfdbfe; }
-    .fichier-item .fichier-icone { font-size: 1.3rem; }
-    .fichier-nom { font-size: 0.85rem; font-weight: 700; }
-    .fichier-desc { font-size: 0.72rem; color: var(--gris); }
-    .fichier-dl { margin-left: auto; font-size: 0.75rem; color: var(--bleu); font-weight: 600; }
-
     @media (max-width: 768px) {
-      .deux-cols { grid-template-columns: 1fr; }
+      .deux-cols, .galerie-item-body { grid-template-columns: 1fr; }
+      .galerie-item-img { border-right: none; border-bottom: 1px solid var(--bordure); }
     }
-</style>
+  </style>
 </head>
 <body>
 
 <nav>
   <a href="index.html" class="logo">François Leprieur</a>
   <ul>
-    <li><a href="index.html#apropos">Profil</a></li>
-    <li><a href="index.html#projets">Projets</a></li>
-    <li><a href="index.html#competences">Compétences</a></li>
-    <li><a href="index.html#bilan">Bilan</a></li>
+    <li><a href="index.html#profil">Profil</a></li>
+    <li><a href="projets.html">Projets</a></li>
+    <li><a href="competences.html">Compétences</a></li>
+    <li><a href="index.html#bilan">Projet pro</a></li>
   </ul>
   <a href="https://www.linkedin.com/in/leprieur-fran%C3%A7ois-45450b387/" class="btn-nav" target="_blank">LinkedIn ↗</a>
 </nav>
 
 <div class="projet-page">
 
-  <!-- HERO -->
   <div class="projet-hero">
     <div class="contenu">
-      <a href="index.html#projets" class="retour">← Retour aux projets</a>
+      <a href="projets.html" class="retour">← Retour aux projets</a>
       <div class="projet-meta">
-        <span style="font-size:1.6rem">🗺️</span>
-        <span class="badge-semestre">Projet — S1</span>
+        <span style="font-size:1.5rem">🗺️</span>
+        <span class="badge-semestre">Projet S1 · RT3</span>
       </div>
       <h1>Statistiques géographiques via API OpenStreetMap</h1>
       <div class="tags" style="margin-top:0.7rem">
         <span class="tag vert">Python</span>
-            <span class="tag vert">API REST</span>
-            <span class="tag vert">OpenStreetMap</span>
-            <span class="tag vert">JSON</span>
-            <span class="tag">Binôme</span>
-            
+        <span class="tag vert">API REST</span>
+        <span class="tag vert">OpenStreetMap</span>
+        <span class="tag vert">JSON</span>
+        <span class="tag">Binôme</span>
       </div>
     </div>
   </div>
 
-  <!-- PRÉSENTATION -->
   <section class="section-projet">
     <div class="contenu">
-      <p class="section-titre">Présentation</p>
+      <p class="section-titre">Présentation du projet</p>
       <div class="infos-projet">
-        <div class="info-ligne">
-          <div class="label">Catégorie</div>
-          <div class="valeur">RT3 — Développement</div>
-        </div>
-        <div class="info-ligne">
-          <div class="label">Période</div>
-          <div class="valeur">Semestre 1</div>
-        </div>
-        <div class="info-ligne">
-          <div class="label">Format</div>
-          <div class="valeur">Binôme</div>
-        </div>
-        <div class="info-ligne">
-          <div class="label">Rôle</div>
-          <div class="valeur">Développement Python</div>
-        </div>
+        <div class="info-ligne"><div class="label">Catégorie</div><div class="valeur">RT3 — Développement</div></div>
+        <div class="info-ligne"><div class="label">Période</div><div class="valeur">Semestre 1</div></div>
+        <div class="info-ligne"><div class="label">Format</div><div class="valeur">Binôme</div></div>
+        <div class="info-ligne"><div class="label">Rôle</div><div class="valeur">Développement Python</div></div>
       </div>
-      <p class="section-titre">Résumé</p>
-      <p class="resume-texte">Développement d'un programme Python effectuant des requêtes sur l'API OpenStreetMap pour récupérer des données géographiques et en extraire des statistiques personnalisées. Traitement et visualisation des données.</p>
+      <p class="resume-texte">Développement en Python d'un programme interrogeant l'API Overpass (OpenStreetMap) pour extraire des données géolocalisées sur une zone choisie (ex. lignes de bus ou restaurants à Lyon) et produire des statistiques structurées sous forme de fichiers Markdown, convertis automatiquement en HTML.</p>
     </div>
   </section>
 
-  <!-- CONTEXTE & MÉTHODE -->
   <section class="section-projet" style="background:var(--blanc)">
     <div class="contenu">
-      <p class="section-titre">Contexte &amp; Méthode</p>
+      <p class="section-titre">Contexte &amp; Démarche</p>
       <div class="deux-cols">
         <div class="bloc-texte">
           <h3>📋 Contexte</h3>
-          <p>Ce projet portait sur le développement et la manipulation d'APIs REST. Il consistait à interroger l'API Overpass (OpenStreetMap) pour extraire des données géolocalisées et produire des statistiques sur une zone géographique choisie — par exemple les lignes de bus de la ville de Lyon.</p>
+          <p>Ce projet portait sur la maîtrise des APIs REST. Il consistait à interroger l'API Overpass (OpenStreetMap) pour extraire des données géolocalisées et produire des statistiques sur une zone géographique choisie.</p>
         </div>
         <div class="bloc-texte">
-          <h3>🔧 Méthode &amp; Outils</h3>
-          <p>Prise en main de l'Overpass Query Language, développement en Python des fonctions de requête et de parsing JSON, puis traitement statistique des données. Utilisation de requests et matplotlib.</p>
+          <h3>🔧 Démarche</h3>
+          <p>Prise en main de l'Overpass Query Language → développement des fonctions de requête en Python → parsing JSON → calcul de statistiques (comptage, moyennes) → export Markdown → conversion automatique en HTML via la fonction <code>convert()</code>.</p>
         </div>
       </div>
     </div>
   </section>
-
-  <!-- BILAN -->
-  <section class="section-projet" style="background:var(--blanc)">
-    <div class="contenu">
-      <p class="section-titre">Résultats &amp; Bilan</p>
-      <div class="deux-cols">
-        <div class="bloc-texte">
-          <h3 style="color:var(--vert)">Points forts</h3>
-          <p>Très bonne maîtrise de Python et des requêtes API REST. Traitement des données JSON propre et bien structuré.</p>
-        </div>
-        <div class="bloc-texte">
-          <h3 style="color:var(--orange)">Les difficultés rencontrées</h3>
-          <p>Nous avons rencontré quelques difficultés pour générer la carte et centrer précisément les marqueurs. Ces problèmes ont été résolus grâce aux indications du professeur.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- GALERIE -->
-  <!--
-    POUR AJOUTER DES PHOTOS :
-    1. Mets tes images dans le dossier portfolio/
-    2. Remplace les exemples ci-dessous par :
-       <div class="galerie-item-wrap" data-src="ma-photo.png" data-legende="Ma légende">
-         <img src="ma-photo.png" alt="description">
-         <div class="legende">Ma légende</div>
-       </div>
-  -->
 
   <section class="section-projet">
     <div class="contenu">
-      <p class="section-titre">Galerie photos &amp; captures</p>
-      <div class="galerie">
-               <div class="galerie-item-wrap" data-src="listesdesbus.png" data-legende="Ma légende">
-         <img src="listesdesbus.png" alt="Image du résultat de la requête API affichant une liste de bus à proximité">
-         <div class="legende">Résultat du programme listant les lignes de bus de Lyon (fiche OSM)</div> 
-       </div>
-       <div class="galerie-item-wrap" data-src="Restaurant.png" data-legende="Ma légende">
-         <img src="Restaurant.png" alt="Image du résultat de la requête API affichant une liste de restaurants à proximité">
-         <div class="legende">Résultat du programme affichant les informations d'un nœud OpenStreetMap</div>
-       </div>
-       <div class="galerie-item-wrap" data-src="mddurestaurant.png" data-legende="Ma légende">
-         <img src="mddurestaurant.png" alt="Image du résultat de la requête API affichant une liste de restaurants à proximité">
-         <div class="legende">Capture du fichier Markdown de statistiques des restaurants à Lyon</div>
-      </div>
-       <div class="galerie-item-wrap" data-src="statsbusmd.png" data-legende="Ma légende">
-         <img src="statsbusmd.png" alt="Image du résultat de la requête API affichant une liste de restaurants à proximité">
-         <div class="legende">Statistiques des bus à Lyon, avant conversion en HTML via la fonction convert</div>
-      </div>
-       <div class="galerie-item-wrap" data-src="imagedelafonctioncodnverte.png" data-legende="Ma légende">
-         <img src="imagedelafonctioncodnverte.png" alt="Image de la fonction convert">
-         <div class="legende">La fonction convert : elle transforme les fichiers Markdown en fichiers HTML</div>
-       </div>
+      <p class="section-titre">Documents produits &amp; ce qu'ils prouvent</p>
+      <div class="galerie-arg">
+
+        <div class="galerie-item">
+          <div class="galerie-item-header">
+            <div class="galerie-item-num">Document 1 / 5</div>
+            <div class="galerie-item-titre">Liste des lignes de bus interrogées via l'API</div>
+          </div>
+          <div class="galerie-item-body">
+            <div class="galerie-item-img" data-src="listesdesbus.png">
+              <img src="listesdesbus.png" alt="Liste des lignes de bus">
+            </div>
+            <div class="galerie-item-desc">
+              <p>Cette capture montre le résultat de ma <strong>requête Overpass sur les lignes de bus de Lyon</strong>. Mon programme interroge l'API, récupère la liste des objets OSM correspondants et les affiche avec leurs attributs (nom, référence, opérateur…).</p>
+              <p style="margin-top:0.8rem">Elle prouve ma capacité à <strong>formuler une requête API structurée</strong> et à interpréter la réponse JSON pour en extraire les champs pertinents.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="galerie-item">
+          <div class="galerie-item-header">
+            <div class="galerie-item-num">Document 2 / 5</div>
+            <div class="galerie-item-titre">Informations détaillées d'un nœud OpenStreetMap</div>
+          </div>
+          <div class="galerie-item-body">
+            <div class="galerie-item-img" data-src="Restaurant.png">
+              <img src="Restaurant.png" alt="Informations nœud OSM">
+            </div>
+            <div class="galerie-item-desc">
+              <p>Cette capture affiche les <strong>attributs complets d'un nœud OSM</strong> (ici un restaurant) : nom, cuisine, adresse, coordonnées GPS, site web, etc. Mon programme parse l'objet JSON et restitue ces informations de manière lisible.</p>
+              <p style="margin-top:0.8rem">Elle démontre ma maîtrise du <strong>parsing JSON en Python</strong> et ma capacité à naviguer dans des structures imbriquées pour extraire des données ciblées.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="galerie-item">
+          <div class="galerie-item-header">
+            <div class="galerie-item-num">Document 3 / 5</div>
+            <div class="galerie-item-titre">Fichier Markdown de statistiques des restaurants</div>
+          </div>
+          <div class="galerie-item-body">
+            <div class="galerie-item-img" data-src="mddurestaurant.png">
+              <img src="mddurestaurant.png" alt="Markdown statistiques restaurants">
+            </div>
+            <div class="galerie-item-desc">
+              <p>Mon programme génère automatiquement ce <strong>fichier Markdown de statistiques</strong> : nombre total de restaurants, répartition par type de cuisine, restaurants avec site web, etc. Toutes ces valeurs sont calculées à partir des données brutes de l'API.</p>
+              <p style="margin-top:0.8rem">Ce document prouve que je suis capable de produire une <strong>chaîne de traitement complète</strong> : collecte → analyse → restitution structurée, de manière entièrement automatisée.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="galerie-item">
+          <div class="galerie-item-header">
+            <div class="galerie-item-num">Document 4 / 5</div>
+            <div class="galerie-item-titre">Statistiques des bus à Lyon (format Markdown)</div>
+          </div>
+          <div class="galerie-item-body">
+            <div class="galerie-item-img" data-src="statsbusmd.png">
+              <img src="statsbusmd.png" alt="Statistiques bus Markdown">
+            </div>
+            <div class="galerie-item-desc">
+              <p>Ce fichier Markdown présente les <strong>statistiques du réseau de bus lyonnais</strong> : nombre de lignes, opérateurs présents, lignes les plus longues… Le fichier est généré automatiquement par mon programme à chaque exécution.</p>
+              <p style="margin-top:0.8rem">Il illustre la <strong>réutilisabilité du code</strong> : le même programme peut analyser n'importe quelle zone géographique en changeant simplement les paramètres de la requête Overpass.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="galerie-item">
+          <div class="galerie-item-header">
+            <div class="galerie-item-num">Document 5 / 5</div>
+            <div class="galerie-item-titre">La fonction convert() — Markdown vers HTML</div>
+          </div>
+          <div class="galerie-item-body">
+            <div class="galerie-item-img" data-src="imagedelafonctioncodnverte.png">
+              <img src="imagedelafonctioncodnverte.png" alt="Fonction convert Python">
+            </div>
+            <div class="galerie-item-desc">
+              <p>J'ai développé cette fonction <code>convert()</code> qui <strong>transforme automatiquement les fichiers Markdown en pages HTML</strong> : elle parse les titres, paragraphes et listes du Markdown et génère les balises HTML correspondantes.</p>
+              <p style="margin-top:0.8rem">Cette fonction illustre ma capacité à <strong>automatiser une tâche répétitive</strong> et à concevoir un outil générique réutilisable — compétence clé dans tout environnement d'administration ou de développement.</p>
+            </div>
+          </div>
+        </div>
+
       </div>
     </div>
   </section>
 
-  <!-- FICHIERS À TÉLÉCHARGER -->
-  <!--
-    POUR AJOUTER UN FICHIER :
-    1. Mets le fichier (.zip, .py, .pdf…) dans le dossier portfolio/
-    2. Ajoute un bloc <a href="monfichier.zip" download class="fichier-item"> ci-dessous
-  -->
   <section class="section-projet" style="background:var(--blanc)">
     <div class="contenu">
+      <p class="section-titre">Bilan</p>
+      <div class="deux-cols">
+        <div class="bloc-texte">
+          <h3 style="color:var(--vert)">✅ Points forts</h3>
+          <p>Très bonne maîtrise de Python et des requêtes API REST. Traitement des données JSON propre et bien structuré. Bonne organisation en binôme avec une répartition claire des tâches.</p>
+        </div>
+        <div class="bloc-texte">
+          <h3 style="color:var(--orange)">⚠️ Difficultés rencontrées</h3>
+          <p>Quelques difficultés pour générer la carte et centrer précisément les marqueurs sur la visualisation géographique. Problème résolu grâce aux indications du professeur et à notre relecture du code.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-projet">
+    <div class="contenu">
       <p class="section-titre">Fichiers du projet</p>
-      <div class="fichiers-list">
-<p style="font-size:0.83rem;color:var(--gris)"><a href="SAE15.zip" download class="fichier-item">📩 Télécharger le fichier ZIP</a></p>      </div>
+      <a href="SAE15.zip" download class="fichier-item">🗜️ &nbsp;Télécharger l'archive du projet (code Python)</a>
     </div>
   </section>
 
 </div>
 
-<!-- LIGHTBOX -->
 <div class="lightbox" id="lightbox">
   <span class="lightbox-close" onclick="document.getElementById('lightbox').classList.remove('open')">✕</span>
-  <img id="lb-img" src="" alt="Photo agrandie">
-  <div class="lightbox-legende" id="lb-legende"></div>
+  <img id="lb-img" src="" alt="Agrandir">
 </div>
 
 <footer>
   <div class="nom">François Leprieur</div>
   <p>BUT R&T Cybersécurité · IUT Grand Ouest Normandie — Ifs (14)</p>
   <ul>
-    <li><a href="index.html#accueil">Accueil</a></li>
-    <li><a href="index.html#projets">Projets</a></li>
-    <li><a href="index.html#competences">Compétences</a></li>
-    <li><a href="index.html#bilan">Bilan</a></li>
+    <li><a href="index.html">Accueil</a></li>
+    <li><a href="projets.html">Projets</a></li>
+    <li><a href="competences.html">Compétences</a></li>
     <li><a href="https://www.linkedin.com/in/leprieur-fran%C3%A7ois-45450b387/" target="_blank">LinkedIn ↗</a></li>
   </ul>
 </footer>
 
 <script>
-
-  // LIGHTBOX
-  document.querySelectorAll('.galerie-item-wrap[data-src]').forEach(wrap => {
-    wrap.addEventListener('click', () => {
-      const lb = document.getElementById('lightbox');
-      document.getElementById('lb-img').src = wrap.dataset.src;
-      document.getElementById('lb-legende').textContent = wrap.dataset.legende || '';
-      lb.classList.add('open');
+  document.querySelectorAll('.galerie-item-img[data-src]').forEach(el => {
+    el.addEventListener('click', () => {
+      document.getElementById('lb-img').src = el.dataset.src;
+      document.getElementById('lightbox').classList.add('open');
     });
   });
-  document.getElementById('lightbox').addEventListener('click', () => {
-    document.getElementById('lightbox').classList.remove('open');
-  });
-  document.addEventListener('keydown', e => {
-    if (e.key === 'Escape') document.getElementById('lightbox').classList.remove('open');
-  });
-
+  document.getElementById('lightbox').addEventListener('click', () => document.getElementById('lightbox').classList.remove('open'));
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') document.getElementById('lightbox').classList.remove('open'); });
 </script>
 </body>
 </html>

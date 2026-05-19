@@ -3,204 +3,91 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Réseau d'entreprise de 120 personnes – Portfolio François Leprieur</title>
+  <title>Réseau d'entreprise 120 personnes – François Leprieur</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
   <style>
-    /* ── PAGE PROJET ── */
     .projet-page { padding-top: 5rem; }
 
-    .projet-hero {
-      background: var(--blanc);
-      border-bottom: 1px solid var(--bordure);
-      padding: 3.5rem 0 2.5rem;
-    }
-    .retour {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.4rem;
-      font-size: 0.78rem;
-      color: var(--gris);
-      text-decoration: none;
-      margin-bottom: 1.5rem;
-      transition: color 0.15s;
-    }
+    .projet-hero { background: var(--blanc); border-bottom: 1px solid var(--bordure); padding: 3.5rem 0 2.5rem; }
+    .retour { display: inline-flex; align-items: center; gap: 0.4rem; font-size: 0.78rem; color: var(--gris); text-decoration: none; margin-bottom: 1.2rem; transition: color 0.15s; }
     .retour:hover { color: var(--bleu); }
+    .projet-hero h1 { font-size: 2rem; font-weight: 800; line-height: 1.15; margin-bottom: 0.5rem; }
+    .projet-meta { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1rem; align-items: center; }
+    .badge-semestre { font-size: 0.72rem; font-weight: 600; color: var(--bleu); background: var(--bleu-bg); padding: 0.25rem 0.7rem; border-radius: 100px; border: 1px solid #bfdbfe; }
 
-    .projet-hero h1 {
-      font-size: 2rem;
-      font-weight: 800;
-      line-height: 1.15;
-      margin-bottom: 0.5rem;
-    }
-    .projet-meta {
-      display: flex;
-      gap: 0.5rem;
-      flex-wrap: wrap;
-      margin-bottom: 1rem;
-      align-items: center;
-    }
-    .badge-semestre {
-      font-size: 0.72rem;
-      font-weight: 600;
-      color: var(--bleu);
-      background: var(--bleu-bg);
-      padding: 0.25rem 0.7rem;
-      border-radius: 100px;
-    }
-    .badge-niveau {
-      display: flex;
-      align-items: center;
-      gap: 0.3rem;
-      font-size: 0.72rem;
-      color: var(--gris);
-    }
-
-    .section-projet {
-      padding: 2.5rem 0;
-      border-bottom: 1px solid var(--bordure);
-    }
+    .section-projet { padding: 2.5rem 0; border-bottom: 1px solid var(--bordure); }
     .section-projet:last-child { border-bottom: none; }
+    .section-titre { font-size: 0.65rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--bleu); margin-bottom: 1rem; }
 
-    .section-titre {
-      font-size: 0.65rem;
-      font-weight: 700;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--bleu);
-      margin-bottom: 0.9rem;
-    }
+    .resume-texte { font-size: 0.93rem; color: #444; line-height: 1.85; max-width: 720px; }
 
-    .resume-texte {
-      font-size: 0.95rem;
-      color: #444;
-      line-height: 1.8;
-      max-width: 720px;
-    }
+    .infos-projet { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 0.8rem; margin-bottom: 2rem; }
 
-    .infos-projet {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-      gap: 0.8rem;
-      margin-bottom: 2rem;
-    }
+    .deux-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+    .bloc-texte { background: var(--blanc); border: 1px solid var(--bordure); border-radius: 12px; padding: 1.3rem 1.4rem; }
+    .bloc-texte h3 { font-size: 0.84rem; font-weight: 700; margin-bottom: 0.6rem; }
+    .bloc-texte p { font-size: 0.84rem; color: #555; line-height: 1.75; }
 
-    .comp-list { display: flex; flex-direction: column; gap: 0.5rem; }
-    .comp-item {
-      display: flex;
-      gap: 0.7rem;
-      align-items: flex-start;
-      background: var(--fond);
-      border: 1px solid var(--bordure);
-      border-radius: 8px;
-      padding: 0.65rem 0.9rem;
-      font-size: 0.84rem;
-      color: #444;
-    }
-    .comp-item .code {
-      background: var(--bleu-bg);
-      color: var(--bleu);
-      font-size: 0.63rem;
-      font-weight: 700;
-      padding: 0.15rem 0.45rem;
-      border-radius: 4px;
-      flex-shrink: 0;
-      margin-top: 2px;
-    }
+    /* GALERIE ARGUMENTÉE */
+    .galerie-arg { display: flex; flex-direction: column; gap: 2rem; }
 
-    .deux-cols {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1.5rem;
-    }
-    .bloc-texte {
+    .galerie-item {
       background: var(--blanc);
       border: 1px solid var(--bordure);
       border-radius: 12px;
-      padding: 1.3rem 1.4rem;
-    }
-    .bloc-texte h3 { font-size: 0.82rem; font-weight: 700; margin-bottom: 0.7rem; color: var(--texte); }
-    .bloc-texte p { font-size: 0.85rem; color: #555; line-height: 1.75; }
-
-    /* GALERIE */
-    .galerie {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-      gap: 1rem;
-    }
-    .galerie-item-wrap {
-      border-radius: 10px;
       overflow: hidden;
-      border: 1px solid var(--bordure);
+      transition: box-shadow 0.2s;
+    }
+    .galerie-item:hover { box-shadow: 0 6px 24px rgba(37,99,235,0.09); }
+
+    .galerie-item-header {
+      padding: 1rem 1.3rem 0.8rem;
+      border-bottom: 1px solid var(--bordure);
       background: var(--fond);
+    }
+    .galerie-item-num {
+      font-size: 0.62rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--bleu);
+      margin-bottom: 0.2rem;
+    }
+    .galerie-item-titre {
+      font-size: 0.92rem;
+      font-weight: 700;
+      color: var(--texte);
+    }
+    .galerie-item-body {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+    }
+    .galerie-item-img {
+      border-right: 1px solid var(--bordure);
       cursor: zoom-in;
-      transition: box-shadow 0.2s, transform 0.2s;
+      overflow: hidden;
     }
-    .galerie-item-wrap:hover {
-      box-shadow: 0 6px 24px rgba(37,99,235,0.12);
-      transform: translateY(-2px);
-    }
-    .galerie-item-wrap img {
+    .galerie-item-img img {
       width: 100%;
-      aspect-ratio: 16/10;
+      height: 100%;
       object-fit: cover;
       display: block;
+      transition: transform 0.2s;
+      min-height: 200px;
     }
-    .legende {
-      font-size: 0.72rem;
-      color: var(--gris);
-      padding: 0.45rem 0.8rem;
-      background: var(--blanc);
-      border-top: 1px solid var(--bordure);
-      text-align: center;
+    .galerie-item-img:hover img { transform: scale(1.03); }
+    .galerie-item-desc {
+      padding: 1.2rem 1.3rem;
+      font-size: 0.83rem;
+      color: #555;
+      line-height: 1.8;
     }
-
-    /* LIGHTBOX */
-    .lightbox {
-      display: none;
-      position: fixed;
-      inset: 0;
-      background: rgba(0,0,0,0.88);
-      z-index: 1000;
-      align-items: center;
-      justify-content: center;
-      cursor: zoom-out;
-      padding: 2rem;
-    }
-    .lightbox.open { display: flex; }
-    .lightbox img {
-      max-width: 90vw;
-      max-height: 85vh;
-      object-fit: contain;
-      border-radius: 8px;
-      box-shadow: 0 20px 60px rgba(0,0,0,0.5);
-    }
-    .lightbox-legende {
-      position: fixed;
-      bottom: 1.5rem;
-      left: 50%;
-      transform: translateX(-50%);
-      color: rgba(255,255,255,0.7);
-      font-size: 0.8rem;
-      text-align: center;
-      max-width: 600px;
-    }
-    .lightbox-close {
-      position: fixed;
-      top: 1.2rem;
-      right: 1.5rem;
-      color: white;
-      font-size: 1.8rem;
-      cursor: pointer;
-      line-height: 1;
-      opacity: 0.7;
-      transition: opacity 0.15s;
-    }
-    .lightbox-close:hover { opacity: 1; }
+    .galerie-item-desc strong { color: var(--texte); }
 
     /* FICHIERS */
-    .fichiers-list { display: flex; flex-direction: column; gap: 0.6rem; }
     .fichier-item {
       display: flex;
       align-items: center;
@@ -212,53 +99,53 @@
       text-decoration: none;
       color: var(--texte);
       transition: border-color 0.15s;
+      font-size: 0.85rem;
+      font-weight: 600;
     }
-    .fichier-item:hover { border-color: #bfdbfe; }
-    .fichier-item .fichier-icone { font-size: 1.3rem; }
-    .fichier-nom { font-size: 0.85rem; font-weight: 700; }
-    .fichier-desc { font-size: 0.72rem; color: var(--gris); }
-    .fichier-dl { margin-left: auto; font-size: 0.75rem; color: var(--bleu); font-weight: 600; }
+    .fichier-item:hover { border-color: #bfdbfe; color: var(--bleu); }
+
+    /* LIGHTBOX */
+    .lightbox { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.88); z-index: 1000; align-items: center; justify-content: center; cursor: zoom-out; padding: 2rem; }
+    .lightbox.open { display: flex; }
+    .lightbox img { max-width: 90vw; max-height: 85vh; object-fit: contain; border-radius: 8px; }
+    .lightbox-close { position: fixed; top: 1.2rem; right: 1.5rem; color: white; font-size: 1.8rem; cursor: pointer; opacity: 0.7; line-height: 1; }
+    .lightbox-close:hover { opacity: 1; }
 
     @media (max-width: 768px) {
-      .deux-cols { grid-template-columns: 1fr; }
+      .deux-cols, .galerie-item-body { grid-template-columns: 1fr; }
+      .galerie-item-img { border-right: none; border-bottom: 1px solid var(--bordure); }
     }
-</style>
+  </style>
 </head>
 <body>
 
 <nav>
   <a href="index.html" class="logo">François Leprieur</a>
   <ul>
-    <li><a href="index.html#apropos">Profil</a></li>
-    <li><a href="index.html#projets">Projets</a></li>
-    <li><a href="index.html#competences">Compétences</a></li>
-    <li><a href="index.html#bilan">Bilan</a></li>
+    <li><a href="index.html#profil">Profil</a></li>
+    <li><a href="projets.html">Projets</a></li>
+    <li><a href="competences.html">Compétences</a></li>
+    <li><a href="index.html#bilan">Projet pro</a></li>
   </ul>
   <a href="https://www.linkedin.com/in/leprieur-fran%C3%A7ois-45450b387/" class="btn-nav" target="_blank">LinkedIn ↗</a>
 </nav>
 
 <div class="projet-page">
 
-  <!-- HERO -->
   <div class="projet-hero">
     <div class="contenu">
-      <a href="index.html#projets" class="retour">← Retour aux projets</a>
+      <a href="projets.html" class="retour">← Retour aux projets</a>
       <div class="projet-meta">
-        <span style="font-size:1.6rem">🏢</span>
-        <span class="badge-semestre">Projet S1</span>
-        <span class="badge-niveau">
-          <span class="point vert"></span>
-          Terminé
-        </span>
+        <span style="font-size:1.5rem">🏢</span>
+        <span class="badge-semestre">Projet S1 · RT1</span>
       </div>
       <h1>Création d'un réseau d'entreprise de 120 personnes</h1>
       <div class="tags" style="margin-top:0.7rem">
         <span class="tag bleu">VLAN</span>
-            <span class="tag bleu">Routage inter-VLAN</span>
-            <span class="tag bleu">Adressage IP</span>
-            <span class="tag bleu">Proxmox</span>
-            <span class="tag">Groupe de 5</span>
-            
+        <span class="tag bleu">Routage inter-VLAN</span>
+        <span class="tag bleu">Adressage IP</span>
+        <span class="tag bleu">Proxmox</span>
+        <span class="tag">Groupe de 5</span>
       </div>
     </div>
   </div>
@@ -266,47 +153,91 @@
   <!-- PRÉSENTATION -->
   <section class="section-projet">
     <div class="contenu">
-      <p class="section-titre">Présentation</p>
+      <p class="section-titre">Présentation du projet</p>
       <div class="infos-projet">
-        <div class="info-ligne">
-          <div class="label">Catégorie</div>
-          <div class="valeur">RT1 — Réseaux</div>
-        </div>
-        <div class="info-ligne">
-          <div class="label">Période</div>
-          <div class="valeur">Semestre 1</div>
-        </div>
-        <div class="info-ligne">
-          <div class="label">Format</div>
-          <div class="valeur">Groupe de 5</div>
-        </div>
-        <div class="info-ligne">
-          <div class="label">Rôle</div>
-          <div class="valeur">Configuration réseaux &amp; VMs</div>
-        </div>
+        <div class="info-ligne"><div class="label">Catégorie</div><div class="valeur">RT1 — Réseaux</div></div>
+        <div class="info-ligne"><div class="label">Période</div><div class="valeur">Semestre 1</div></div>
+        <div class="info-ligne"><div class="label">Format</div><div class="valeur">Groupe de 5</div></div>
+        <div class="info-ligne"><div class="label">Rôle</div><div class="valeur">Configuration réseaux &amp; VMs</div></div>
       </div>
-      <p class="section-titre">Résumé</p>
-      <p class="resume-texte">Conception et administration d'un réseau complet pour une entreprise de 120 utilisateurs : plan d'adressage IP, création et configuration de VLANs, routage inter-VLAN, et déploiement de machines virtuelles sur Proxmox.</p>
+      <p class="resume-texte">Conception et administration d'un réseau complet pour une entreprise fictive de 120 utilisateurs répartis en plusieurs services (Ventes, Commercial…). Chaque département est isolé dans un VLAN dédié, dispose d'un espace de partage Samba et d'un accès à un site web interne. Le projet couvre la conception, la configuration et le déploiement complet de l'infrastructure.</p>
     </div>
   </section>
 
   <!-- CONTEXTE & MÉTHODE -->
   <section class="section-projet" style="background:var(--blanc)">
     <div class="contenu">
-      <p class="section-titre">Contexte &amp; Méthode</p>
+      <p class="section-titre">Contexte &amp; Démarche</p>
       <div class="deux-cols">
         <div class="bloc-texte">
           <h3>📋 Contexte</h3>
-          <p>L'objectif était de simuler la mise en place d'une infrastructure réseau réelle pour une entreprise fictive de 120 employés, répartis en plusieurs services (Ventes, Commercial, etc.), chacun isolé dans un VLAN dédié. Le personnel devait également disposer d'un espace de partage Samba, d'un site web interne et de sessions de travail accessibles depuis n'importe quel poste.</p>
+          <p>Simuler la mise en place d'une infrastructure réseau réelle pour une entreprise de 120 employés répartis en plusieurs services, chacun isolé dans son propre VLAN pour des raisons de sécurité et de performance.</p>
         </div>
         <div class="bloc-texte">
-          <h3>🔧 Les compétences développées</h3>
-          <p>Nous avons d'abord défini le plan d'adressage IP et le schéma physique, puis configuré les ports, les VLANs et les modes de liens (Trunk, Access, Mode routé) dans le schéma logique. Le routage inter-VLAN a ensuite été réalisé sur un routeur central. Enfin, des templates ont été configurés sur Proxmox pour déployer les machines virtuelles de chaque département.</p>
+          <h3>🔧 Démarche</h3>
+          <p>Définition du plan d'adressage IP → schéma physique (ports, câblage) → schéma logique (VLANs, modes de liens Trunk/Access/Routé) → configuration du routage inter-VLAN → déploiement des VMs sur Proxmox. Suivi via diagramme de Gantt.</p>
         </div>
       </div>
     </div>
   </section>
 
+  <!-- GALERIE ARGUMENTÉE -->
+  <section class="section-projet">
+    <div class="contenu">
+      <p class="section-titre">Documents produits &amp; ce qu'ils prouvent</p>
+      <div class="galerie-arg">
+
+        <div class="galerie-item">
+          <div class="galerie-item-header">
+            <div class="galerie-item-num">Document 1 / 3</div>
+            <div class="galerie-item-titre">Schéma logique du réseau</div>
+          </div>
+          <div class="galerie-item-body">
+            <div class="galerie-item-img" data-src="Schéma_logique.png">
+              <img src="Schéma_logique.png" alt="Schéma logique du réseau d'entreprise">
+            </div>
+            <div class="galerie-item-desc">
+              <p>J'ai conçu ce schéma logique pour définir <strong>l'architecture réseau complète</strong> : plan d'adressage IP, découpage en VLANs par département, adresses de réseau et de passerelle pour chaque segment.</p>
+              <p style="margin-top:0.8rem">Il précise également les <strong>modes de liens</strong> entre les équipements : ports en mode Access (postes utilisateurs), Trunk (liaisons inter-switch) et Mode routé (vers le routeur central). Ce document a servi de référence commune pour tout le groupe pendant la configuration.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="galerie-item">
+          <div class="galerie-item-header">
+            <div class="galerie-item-num">Document 2 / 3</div>
+            <div class="galerie-item-titre">Schéma physique du réseau</div>
+          </div>
+          <div class="galerie-item-body">
+            <div class="galerie-item-img" data-src="schéma physique de la SAE12.png">
+              <img src="schéma physique de la SAE12.png" alt="Schéma physique du réseau">
+            </div>
+            <div class="galerie-item-desc">
+              <p>J'ai réalisé ce schéma physique pour visualiser <strong>les connexions concrètes entre les équipements</strong> : numéros de ports utilisés sur chaque switch, câblage entre les baies et emplacement des équipements actifs.</p>
+              <p style="margin-top:0.8rem">Ce document nous a permis d'éviter les erreurs de câblage et de <strong>diagnostiquer rapidement</strong> les problèmes lors de la mise en commun — notamment une erreur d'adressage sur le routeur central qui a été identifiée grâce à ce schéma.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="galerie-item">
+          <div class="galerie-item-header">
+            <div class="galerie-item-num">Document 3 / 3</div>
+            <div class="galerie-item-titre">Diagramme de Gantt du projet</div>
+          </div>
+          <div class="galerie-item-body">
+            <div class="galerie-item-img" data-src="Diagramme_de_gantt_SAE12.png">
+              <img src="Diagramme_de_gantt_SAE12.png" alt="Diagramme de Gantt">
+            </div>
+            <div class="galerie-item-desc">
+              <p>J'ai utilisé ce diagramme de Gantt pour <strong>planifier les tâches</strong> du projet en amont et suivre l'avancement de chaque membre du groupe. Il définit les grandes étapes : conception, configuration, tests et rédaction du compte rendu.</p>
+              <p style="margin-top:0.8rem">Grâce à cette planification, on a pu <strong>réagir rapidement lors des problèmes</strong> de mise en commun en ayant une phase de tests dédiée prévue dans le planning — ce qui nous a permis de corriger les erreurs avant la livraison finale.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
 
   <!-- BILAN -->
   <section class="section-projet" style="background:var(--blanc)">
@@ -314,100 +245,54 @@
       <p class="section-titre">Bilan</p>
       <div class="deux-cols">
         <div class="bloc-texte">
-          <h3 style="color:var(--vert)"> Points forts</h3>
-          <p>Bonne maîtrise du plan d'adressage et de la segmentation réseau. Configuration fonctionnelle du routage inter-VLAN. Bonne capacité à résoudre des problèmes en équipe.</p>
+          <h3 style="color:var(--vert)">✅ Points forts</h3>
+          <p>Bonne maîtrise du plan d'adressage et de la segmentation réseau. Configuration fonctionnelle du routage inter-VLAN. Bonne capacité à résoudre des problèmes en équipe. Planification efficace via le Gantt.</p>
         </div>
         <div class="bloc-texte">
-          <h3 style="color:var(--orange)"> À améliorer</h3>
-          <p>La mise en commun a été délicate, notamment à cause d'erreurs d'adressage IP sur le routeur central. Le problème a toutefois été identifié et corrigé lors de la phase de tests prévue dans notre diagramme de Gantt.</p>
+          <h3 style="color:var(--orange)">⚠️ À améliorer</h3>
+          <p>La mise en commun a été délicate à cause d'erreurs d'adressage IP sur le routeur central. Le problème a été identifié et corrigé lors de la phase de tests. Une relecture croisée plus tôt aurait évité ce problème.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- GALERIE -->
-  <!--
-    POUR AJOUTER DES PHOTOS :
-    1. Mets tes images dans le dossier portfolio/
-    2. Remplace les exemples ci-dessous par :
-       <div class="galerie-item-wrap" data-src="ma-photo.png" data-legende="Ma légende">
-         <img src="ma-photo.png" alt="description">
-         <div class="legende">Ma légende</div>
-       </div>
-  -->
+  <!-- FICHIERS -->
   <section class="section-projet">
     <div class="contenu">
-      <p class="section-titre">Galerie photos &amp; captures</p>
-      <div class="galerie">
-        <div class="galerie-item-wrap" data-src="Schéma_logique.png" data-legende="Ma légende">
-         <img src="Schéma_logique.png" alt="description">
-         <div class="legende">Le schéma logique nous a permis de définir les plans d'adressage IP avec les différents VLANs et adresses de réseau, mais aussi de préciser les liens agrégés et les différents modes de liens (Trunk, Access et Mode routé) </div>
-       </div>
-       <div class="galerie-item-wrap" data-src="schéma physique de la SAE12.png" data-legende="Ma légende">
-         <img src="schéma physique de la SAE12.png" alt="description">
-         <div class="legende">Le schéma physique nous a permis de visualiser l'architecture réseau et les connexions entre les différents équipements physiques (numéros de ports), ainsi que les VLANs et l'adressage IP associé </div>
-       </div>
-       <div class="galerie-item-wrap" data-src="Diagramme_de_gantt_SAE12.png" data-legende="Ma légende">
-         <img src="Diagramme_de_gantt_SAE12.png" alt="description">
-         <div class="legende">Le diagramme de Gantt nous a permis de planifier les tâches et de suivre l'avancement du projet, ce qui s'est révélé très utile pour réagir rapidement en cas de problème lors de la mise en commun </div>
-       </div>
-<p style="font-size:0.83rem;color:var(--gris)"></p>      </div>
-    </div>
-  </section>
-
-  <!-- FICHIERS À TÉLÉCHARGER -->
-  <!--
-    POUR AJOUTER UN FICHIER :
-    1. Mets le fichier (.zip, .py, .pdf…) dans le dossier portfolio/
-    2. Ajoute un bloc <a href="monfichier.zip" download class="fichier-item"> ci-dessous
-  -->
-  <section class="section-projet" style="background:var(--blanc)">
-    <div class="contenu">
-      <p class="section-titre">🪚 Fichiers du projet</p>
-      <div class="fichiers-list">
-<p style="font-size:0.83rem;color:var(--gris)"> <a href="SAE12.zip" download class="fichier-item">📩 Télécharger le fichier ZIP du projet les configurations</a></p>      </div>
+      <p class="section-titre">Fichiers du projet</p>
+      <a href="SAE12.zip" download class="fichier-item">
+        🗜️ &nbsp;Télécharger l'archive du projet (configurations, schémas)
+      </a>
     </div>
   </section>
 
 </div>
 
-<!-- LIGHTBOX -->
 <div class="lightbox" id="lightbox">
   <span class="lightbox-close" onclick="document.getElementById('lightbox').classList.remove('open')">✕</span>
-  <img id="lb-img" src="" alt="Photo agrandie">
-  <div class="lightbox-legende" id="lb-legende"></div>
+  <img id="lb-img" src="" alt="Agrandir">
 </div>
 
 <footer>
   <div class="nom">François Leprieur</div>
   <p>BUT R&T Cybersécurité · IUT Grand Ouest Normandie — Ifs (14)</p>
   <ul>
-    <li><a href="index.html#accueil">Accueil</a></li>
-    <li><a href="index.html#projets">Projets</a></li>
-    <li><a href="index.html#competences">Compétences</a></li>
-    <li><a href="index.html#bilan">Bilan</a></li>
+    <li><a href="index.html">Accueil</a></li>
+    <li><a href="projets.html">Projets</a></li>
+    <li><a href="competences.html">Compétences</a></li>
     <li><a href="https://www.linkedin.com/in/leprieur-fran%C3%A7ois-45450b387/" target="_blank">LinkedIn ↗</a></li>
   </ul>
 </footer>
 
 <script>
-
-  // LIGHTBOX
-  document.querySelectorAll('.galerie-item-wrap[data-src]').forEach(wrap => {
-    wrap.addEventListener('click', () => {
-      const lb = document.getElementById('lightbox');
-      document.getElementById('lb-img').src = wrap.dataset.src;
-      document.getElementById('lb-legende').textContent = wrap.dataset.legende || '';
-      lb.classList.add('open');
+  document.querySelectorAll('.galerie-item-img[data-src]').forEach(el => {
+    el.addEventListener('click', () => {
+      document.getElementById('lb-img').src = el.dataset.src;
+      document.getElementById('lightbox').classList.add('open');
     });
   });
-  document.getElementById('lightbox').addEventListener('click', () => {
-    document.getElementById('lightbox').classList.remove('open');
-  });
-  document.addEventListener('keydown', e => {
-    if (e.key === 'Escape') document.getElementById('lightbox').classList.remove('open');
-  });
-
+  document.getElementById('lightbox').addEventListener('click', () => document.getElementById('lightbox').classList.remove('open'));
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') document.getElementById('lightbox').classList.remove('open'); });
 </script>
 </body>
 </html>
